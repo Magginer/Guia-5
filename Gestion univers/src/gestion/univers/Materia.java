@@ -5,15 +5,17 @@
  */
 package gestion.univers;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author marti
  */
 public class Materia {
     private String nombre;
-    private String Apellido
+    private String Apellido;
     private int dni;
-    private localdate
+    private LocalDate fechaNacimiento;
 
     public String getNombre() {
         return nombre;
