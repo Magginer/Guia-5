@@ -17,6 +17,24 @@ public class Materia {
     private int anio;
     private boolean estado;
 
+    public Materia() {
+    }
+
+    public Materia(String nombre, int anio, boolean estado) {
+        this.nombre = nombre;
+        this.anio = anio;
+        this.estado = estado;
+    }
+
+    public Materia(int IdMateria, String nombre, int anio, boolean estado) {
+        this.IdMateria = IdMateria;
+        this.nombre = nombre;
+        this.anio = anio;
+        this.estado = estado;
+    }
+
+    
+    
     public int getIdMateria() {
         return IdMateria;
     }

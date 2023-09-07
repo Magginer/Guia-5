@@ -19,6 +19,28 @@ public class Alumno {
  private int dni;
  private boolean estado;
 
+    public Alumno() {
+    }
+
+    public Alumno(LocalDate fechadenacimiento, String nombre, String apellido, int dni, boolean estado) {
+        this.fechadenacimiento = fechadenacimiento;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.estado = estado;
+    }
+
+    public Alumno(LocalDate fechadenacimiento, String nombre, String apellido, int IdAlumno, int dni, boolean estado) {
+        this.fechadenacimiento = fechadenacimiento;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.IdAlumno = IdAlumno;
+        this.dni = dni;
+        this.estado = estado;
+    }
+
+ 
+ 
     public LocalDate getFechadenacimiento() {
         return fechadenacimiento;
     }
