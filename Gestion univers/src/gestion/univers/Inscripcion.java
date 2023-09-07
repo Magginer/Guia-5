@@ -10,8 +10,6 @@ package gestion.univers;
  * @author marti
  */
 public class Inscripcion {
-    private String nombre;
-    private String Apellido
-    private int dni;
-    private localdate
+  
+            
 }
