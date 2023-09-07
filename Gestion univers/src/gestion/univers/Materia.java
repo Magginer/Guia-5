@@ -12,10 +12,18 @@ import java.time.LocalDate;
  * @author marti
  */
 public class Materia {
+    private int IdMateria;
     private String nombre;
-    private String Apellido;
-    private int dni;
-    private LocalDate fechaNacimiento;
+    private int anio;
+    private boolean estado;
+
+    public int getIdMateria() {
+        return IdMateria;
+    }
+
+    public void setIdMateria(int IdMateria) {
+        this.IdMateria = IdMateria;
+    }
 
     public String getNombre() {
         return nombre;
@@ -25,25 +33,26 @@ public class Materia {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return Apellido;
+    public int getAnio() {
+        return anio;
     }
 
-    public void setApellido(String Apellido) {
-        this.Apellido = Apellido;
+    public void setAnio(int anio) {
+        this.anio = anio;
     }
 
-    public int getDni() {
-        return dni;
+    public boolean isEstado() {
+        return estado;
     }
 
-    public void setDni(int dni) {
-        this.dni = dni;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "Materia{" + "nombre=" + nombre + ", Apellido=" + Apellido + ", dni=" + dni + '}';
+        return "Materia{" + "IdMateria=" + IdMateria + ", nombre=" + nombre + ", anio=" + anio + ", estado=" + estado + '}';
     }
+    
             
 }
