@@ -5,7 +5,6 @@
  */
 package gestion.univers.entidades;
 
-import java.time.LocalDate;
 
 /**
  *
