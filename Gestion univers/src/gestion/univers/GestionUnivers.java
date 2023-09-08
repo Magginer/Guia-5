@@ -5,6 +5,9 @@
  */
 package gestion.univers;
 
+import gestion.univers.accesoADatos.Conexion;
+import java.sql.Connection;
+
 /**
  *
  * @author marti
@@ -15,6 +18,8 @@ public class GestionUnivers {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Connection con=Conexion.getConexion();
         
     }
     
