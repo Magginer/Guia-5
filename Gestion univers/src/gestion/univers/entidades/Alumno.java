@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestion.univers;
+package gestion.univers.entidades;
 
 import java.time.LocalDate;
 
