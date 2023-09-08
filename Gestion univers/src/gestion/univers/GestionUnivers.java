@@ -6,7 +6,10 @@
 package gestion.univers;
 
 import gestion.univers.accesoADatos.Conexion;
+import gestion.univers.entidades.Alumno;
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.Month;
 
 /**
  *
@@ -22,5 +25,8 @@ public class GestionUnivers {
         Connection con=Conexion.getConexion();
         
     }
+    
+    Alumno jose=new Alumno(789456123, "Ramirez", "Jose",LocalDate.of(1980, 04, 25), true);
+    
     
 }
