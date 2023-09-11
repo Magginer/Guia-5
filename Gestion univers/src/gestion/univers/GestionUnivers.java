@@ -22,10 +22,14 @@ public class GestionUnivers {
     public static void main(String[] args) {
         
         Connection con=Conexion.getConexion();
+      
+        Alumno jose=new Alumno(789456123, "Ramirez", "Jose",LocalDate.of(1980, 04, 25), true);
+        
+   
         
     }
     
-    Alumno jose=new Alumno(789456123, "Ramirez", "Jose",LocalDate.of(1980, 04, 25), true);
+    
     
     
 }
