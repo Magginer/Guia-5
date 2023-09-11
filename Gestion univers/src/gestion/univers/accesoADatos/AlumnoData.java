@@ -34,7 +34,7 @@ public class AlumnoData {
     
     public void guardarAlumno (Alumno alumno ) {
         
-     String sql="INSERT INTO almuno (dni, apellido, nombre, fechanacimiento, estado)"
+     String sql="INSERT INTO alumno (dni, apellido, nombre, fechanacimiento, estado)"
              + "VALUES (?,?,?,?,?)";
      
      
@@ -62,6 +62,16 @@ public class AlumnoData {
         
     }
             
-                    
+    public void modificarAlumno (Alumno alumno) {
+        
+        String sql="UPDATE alumno SET dni=?, apellido=?, nombre=?, fechanacimiento=?"
+                + "WHERE idAlumno=?";
+        
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+                    } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+        }
+    }               
             
 }
