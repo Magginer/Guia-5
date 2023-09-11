@@ -23,7 +23,8 @@ public class GestionUnivers {
         
         Connection con=Conexion.getConexion();
       
-        Alumno jose=new Alumno(789456123, "Ramirez", "Jose",LocalDate.of(1980, 04, 25), true);
+        Alumno juan = new Alumno(LocalDate.of(1980,04,25),"juan", "Perez", 28356951, true);
+        
         
    
         
