@@ -82,11 +82,26 @@ public class AlumnoData {
                 JOptionPane.showMessageDialog(null, "Alumno Modificado");
                 
             }
-       
-                    
                     } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
     }               
+    public void eliminarAlumno(int id){
+        String sql="UPDATE alumno SET estado = 0 WHERE idAlumno=?";
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito=ps.executeUpdate();
             
+            if(exito==1){
+                JOptionPane.showMessageDialog(null, "Alumno borrado");
+            }
+                    
+                    } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+            
+        }
+        
+    }        
 }
