@@ -24,12 +24,20 @@ public class GestionUnivers {
         
         Connection con=Conexion.getConexion();
       
-        Alumno juan = new Alumno(LocalDate.of(1980,04,25),"juan pablo", "Perez",1, 28356951, true);
+        //Alumno juan = new Alumno(LocalDate.of(1980,04,25),"juan ezequiel", "Perez",1, 28356951, true);
         AlumnoData alu=new AlumnoData();
         //alu.guardarAlumno(juan);
         //alu.modificarAlumno(juan);
-        alu.eliminarAlumno(1);
-  
+        //alu.eliminarAlumno(1);
+        //alu.reactivarAlumno(1);
+        /*Alumno alumnoEncontrado=alu.buscarAlumno(1);
+        if(alumnoEncontrado!=null{
+        
+        System.out.println("dni "+alumnoEncontrado.getDni());
+        System.out.println("apellido "+alumnoEncontrado.getApellido());*/
+        
+        
+              
     }
     
     
