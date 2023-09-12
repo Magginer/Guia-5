@@ -7,7 +7,9 @@ package gestion.univers;
 
 import gestion.univers.accesoADatos.AlumnoData;
 import gestion.univers.accesoADatos.Conexion;
+import gestion.univers.accesoADatos.MateriaData;
 import gestion.univers.entidades.Alumno;
+import gestion.univers.entidades.Materia;
 import java.sql.Connection;
 import java.time.LocalDate;
 
@@ -35,10 +37,8 @@ public class GestionUnivers {
         
         System.out.println("dni "+alumnoEncontrado.getDni()); 
         System.out.println("apellido "+alumnoEncontrado.getApellido());
-        
-        
-              
-    }*/
+       
+    }
     
       AlumnoData alu=new AlumnoData();  
       for(Alumno alumno:alu.ListarAlumnos()){
@@ -50,9 +50,12 @@ public class GestionUnivers {
           System.out.println("FECHA DE NACIMIENTO "+alumno.getFechadenacimiento());
    
       
-      }
-    
-    
+      }*/
+      Materia q=new Materia(4 ,"Quimica3", 3, true);
+      MateriaData mate=new MateriaData();
+      //mate.guardarMateria(q);
+      //mate.modificarMateria(q);  // al modificar el dato acordarse de colocarl el ID
+      
     
 }
 }
