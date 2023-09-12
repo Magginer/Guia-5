@@ -52,6 +52,8 @@ public class GestionUnivers {
       
       }*/
 
+      //  ------------------------------------------------------------------------------------------- 
+        
  /*Materia q=new Materia(4 ,"Quimica3", 3, true);
       MateriaData mate=new MateriaData();
       //mate.guardarMateria(q);
