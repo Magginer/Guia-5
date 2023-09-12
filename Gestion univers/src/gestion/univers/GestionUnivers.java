@@ -23,9 +23,9 @@ public class GestionUnivers {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        Connection con=Conexion.getConexion();
-      /*
+
+        Connection con = Conexion.getConexion();
+        /*
         //Alumno juan = new Alumno(LocalDate.of(1980,04,25),"Margo", "Garcia",1, 28356952, true);
         AlumnoData alu=new AlumnoData();
         //alu.guardarAlumno(juan);
@@ -51,11 +51,28 @@ public class GestionUnivers {
    
       
       }*/
-      Materia q=new Materia(4 ,"Quimica3", 3, true);
+
+ /*Materia q=new Materia(4 ,"Quimica3", 3, true);
       MateriaData mate=new MateriaData();
       //mate.guardarMateria(q);
       //mate.modificarMateria(q);  // al modificar el dato acordarse de colocarl el ID
+      //mate.eliminarMateria(1);
+      //mate.reactivarMateria(1);
+      Materia materiaEncontrada=mate.buscarMateria(3);
+      if(materiaEncontrada!=null){
       
-    
-}
+          System.out.println("Nombre "+materiaEncontrada.getNombre());
+          System.out.println("Año "+materiaEncontrada.getAnio());
+          
+      }*/
+ 
+      MateriaData mate=new MateriaData();
+          for(Materia materia:mate.ListarMateria()){
+             System.out.println("-------------------------------");
+          System.out.println("NOMBRE "+materia.getNombre());
+          System.out.println("AÑO "+materia.getAnio());
+          }
+      
+ 
+    }
 }
