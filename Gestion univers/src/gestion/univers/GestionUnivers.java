@@ -5,10 +5,9 @@
  */
 package gestion.univers;
 
-import gestion.univers.accesoADatos.AlumnoData;
-import gestion.univers.accesoADatos.Conexion;
-import gestion.univers.accesoADatos.MateriaData;
+import gestion.univers.accesoADatos.*;
 import gestion.univers.entidades.Alumno;
+import gestion.univers.entidades.Inscripcion;
 import gestion.univers.entidades.Materia;
 import java.sql.Connection;
 import java.time.LocalDate;
@@ -52,9 +51,8 @@ public class GestionUnivers {
       
       }*/
 
-      //  ------------------------------------------------------------------------------------------- 
-        
- /*Materia q=new Materia(4 ,"Quimica3", 3, true);
+        //  ------------------------------------------------------------------------------------------- 
+        /*Materia q=new Materia(4 ,"Quimica3", 3, true);
       MateriaData mate=new MateriaData();
       //mate.guardarMateria(q);
       //mate.modificarMateria(q);  // al modificar el dato acordarse de colocarl el ID
@@ -67,14 +65,25 @@ public class GestionUnivers {
           System.out.println("Año "+materiaEncontrada.getAnio());
           
       }*/
- 
-      MateriaData mate=new MateriaData();
+    /*MateriaData mate=new MateriaData();
           for(Materia materia:mate.ListarMateria()){
              System.out.println("-------------------------------");
           System.out.println("NOMBRE "+materia.getNombre());
           System.out.println("AÑO "+materia.getAnio());
-          }
-      
+          }*/
+ 
+          AlumnoData ad= new AlumnoData();
+          MateriaData md=new MateriaData();
+          InscripcionData id=new InscripcionData();
+          
+          Alumno alf= ad.buscarAlumno(2);
+          Materia fla=md.buscarMateria(4);
+          Inscripcion insc=new Inscripcion(alf,fla,7);    //inscripcion del (alumno, materia y nota)
+          
+          id.guardarInscripcion(insc); 
  
     }
+    
+    
+    
 }
