@@ -5,11 +5,15 @@
  */
 package gestion.univers.accesoADatos;
 
+import gestion.univers.entidades.Alumno;
 import gestion.univers.entidades.Inscripcion;
+import gestion.univers.entidades.Materia;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,6 +26,9 @@ import org.mariadb.jdbc.Statement;
 public class InscripcionData {
     
     private Connection con=null;
+
+    private MateriaData md=new MateriaData();
+    private AlumnoData ad=new AlumnoData();
     
     public InscripcionData (){
         
@@ -98,6 +105,37 @@ public class InscripcionData {
            JOptionPane.showMessageDialog(null,"Error al entrar a la tabla Inscripcion");
         }
     
+    }
+    
+    public List<Inscripcion> ObtenerInscripciones(){
+    
+    ArrayList<Inscripcion> cursadas=new ArrayList<>();
+    
+    String sql = "SELECT * FROM inscripcion";
+    
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            
+            while(rs.next()){
+            
+                Inscripcion insc=new Inscripcion();
+                insc.setidInscripcion(rs.getInt("idinscripto"));
+                Alumno alu=ad.buscarAlumno(rs.getInt("idalumno"));
+                Materia mat=ad.buscarMateria(rs.getInt("idmateria"));  // sale este error pero no lo veo ahora xD
+                insc.setAlumno(alu);
+                insc.setMateria(mat);
+                insc.setNota(rs.getDouble("nota"));
+                cursadas.add(insc);
+            
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al entrar a la tabla Inscripcion");
+        }
+        
+        return cursadas;
     }
     
 }
