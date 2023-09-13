@@ -52,11 +52,31 @@ public class InscripcionData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Error al entrar a la tabla Inscripcion");
         }
-        
-        
-    
+
     }
     
+    public void actualizarNota(int idalumno, int idmateria, double nota){
+    
+    String sql= "UPDATE inscripcion SET nota=? WHERE idalumno=? and idmateria=?"; 
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            ps.setDouble(1, nota);
+            ps.setInt(2, idalumno);
+            ps.setInt(3, idmateria);
+            
+            int filas=ps.executeUpdate();
+            if (filas>0) {
+                
+                JOptionPane.showMessageDialog(null,"se ah actualizado la nota ");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al entrar a la tabla Inscripcion");
+        }
+    }
     
     
     

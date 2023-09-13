@@ -80,8 +80,8 @@ public class GestionUnivers {
           Materia fla=md.buscarMateria(4);
           Inscripcion insc=new Inscripcion(alf,fla,7);    //inscripcion del (alumno, materia y nota)
           
-          id.guardarInscripcion(insc); 
- 
+          //id.guardarInscripcion(insc); 
+          id.actualizarNota(2, 4, 8);
     }
     
     
