@@ -126,6 +126,7 @@ public class InscripcionData {
                 insc.setAlumno(alu);
                 insc.setMateria(mat);
                 insc.setNota(rs.getDouble("nota"));
+                
                 cursadas.add(insc);
             
             }
