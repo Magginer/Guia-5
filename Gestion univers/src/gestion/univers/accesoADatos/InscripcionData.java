@@ -27,8 +27,8 @@ public class InscripcionData {
     
     private Connection con=null;
 
-    private MateriaData md=new MateriaData();
-    private AlumnoData ad=new AlumnoData();
+    private final MateriaData md=new MateriaData();
+    private final AlumnoData ad=new AlumnoData();
     
     public InscripcionData (){
         
@@ -122,7 +122,7 @@ public class InscripcionData {
                 Inscripcion insc=new Inscripcion();
                 insc.setidInscripcion(rs.getInt("idinscripto"));
                 Alumno alu=ad.buscarAlumno(rs.getInt("idalumno"));
-                Materia mat=ad.buscarMateria(rs.getInt("idmateria"));  // sale este error pero no lo veo ahora xD
+                Materia mat=md.buscarMateria(rs.getInt("idmateria"));  // soy un pendejo abismal , habia puesto "ad" en vez de "md"....
                 insc.setAlumno(alu);
                 insc.setMateria(mat);
                 insc.setNota(rs.getDouble("nota"));
