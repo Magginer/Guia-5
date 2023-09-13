@@ -81,7 +81,11 @@ public class GestionUnivers {
           Inscripcion insc=new Inscripcion(alf,fla,7);    //inscripcion del (alumno, materia y nota)
           
           //id.guardarInscripcion(insc); 
-          id.actualizarNota(2, 4, 8);
+          //id.actualizarNota(2, 4, 8);
+          id.deletearMateria(2, 4);
+          
+          
+          
     }
     
     

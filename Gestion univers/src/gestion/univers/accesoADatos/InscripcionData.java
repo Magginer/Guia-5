@@ -78,6 +78,26 @@ public class InscripcionData {
         }
     }
     
+    public void deletearMateria(int idalumno, int idmateria){
     
+        String sql= "DELETE FROM inscripcion WHERE idalumno=? and idmateria=?";
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setInt(1, idalumno);
+            ps.setInt(2, idmateria);
+            
+            int filas=ps.executeUpdate();
+            if (filas>0) {
+                
+                JOptionPane.showMessageDialog(null,"Inscripcion Borrada");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null,"Error al entrar a la tabla Inscripcion");
+        }
+    
+    }
     
 }
