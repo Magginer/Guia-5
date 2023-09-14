@@ -199,5 +199,31 @@ public class InscripcionData {
         }
 return materias;
     }
+public List<Materia> ObtenerMateriasNoCursadas(int IdAlumno) {
+    
+    ArrayList<Materia> materias=new ArrayList<>();
+        
+        String sql = "SELECET * FROM materia WHERE estado = 1 AND idmateria not in"
+                + "(SELECT idmateria FROM inscricpion WHERE idalumno=?)";
 
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, IdAlumno);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Materia materia = new Materia();
+                materia.setIdMateria(rs.getInt("idmateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("año"));
+                materias.add(materia);
+
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla inscripcion");
+        }
+return materias;
+}
 }
