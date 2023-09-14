@@ -234,9 +234,10 @@ public class InscripcionData {
          
          String sql = "SELECT a.idalumno, dni, nombre, apellido, fechanaciemiento, estado"
                  + "FROM inscripcion i, alumno a WHERE i.idalumno = a.idalumno AND idmateria=? AND a.estado = 1";
+                 //sql arranca con el "FROM" y al final lee el "SELECT"/sentencia usada
          
         try {
-            PreparedStatement ps=con.prepareCall(sql);
+            PreparedStatement ps=con.prepareCall(sql);  //es indistinto el call con el statement
             ps.setInt(1, IdMateria);
             
             ResultSet rs=ps.executeQuery();
