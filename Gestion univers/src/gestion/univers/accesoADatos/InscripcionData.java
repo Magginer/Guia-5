@@ -173,8 +173,8 @@ public class InscripcionData {
 
     public List<Materia> ObtenerMateriasCursadas(int IdAlumno) {
 
-        ArrayList<Materia> materias=new ArrayList<>();
-        
+        ArrayList<Materia> materias = new ArrayList<>();
+
         String sql = "SELECET inscripcion.idmateria, nombre, año FROM inscripcion,"
                 + "materia WHERE inscripcion.idmateria = materia.idmateria"
                 + "AND inscripcion.idalumno = ?";
@@ -197,12 +197,13 @@ public class InscripcionData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectar con la tabla inscripcion");
         }
-return materias;
+        return materias;
     }
-public List<Materia> ObtenerMateriasNoCursadas(int IdAlumno) {
-    
-    ArrayList<Materia> materias=new ArrayList<>();
-        
+
+    public List<Materia> ObtenerMateriasNoCursadas(int IdAlumno) {
+
+        ArrayList<Materia> materias = new ArrayList<>();
+
         String sql = "SELECET * FROM materia WHERE estado = 1 AND idmateria not in"
                 + "(SELECT idmateria FROM inscricpion WHERE idalumno=?)";
 
@@ -224,6 +225,38 @@ public List<Materia> ObtenerMateriasNoCursadas(int IdAlumno) {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al conectar con la tabla inscripcion");
         }
-return materias;
-}
+        return materias;
+    }
+
+    public List<Alumno> ObtenerAlumnoxMateria(int IdMateria){
+        
+         ArrayList<Alumno> alumnos = new ArrayList<>();
+         
+         String sql = "SELECET a.idalumno, dni, nombre, apellido, fechanaciemiento, estado"
+                 + "FROM inscripcion i, alumno a WHERE i.idalumno = a.idalumno AND idmateria=? AND a.estado = 1";
+         
+        try {
+            PreparedStatement ps=con.prepareCall(sql);
+            ps.setInt(1, IdMateria);
+            
+            ResultSet rs=ps.executeQuery();
+            while(rs.next()){
+                
+                Alumno alumno=new Alumno();
+                alumno.setIdAlumno(rs.getInt("idalumno"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setFechadenacimiento(rs.getDate("fechanacimiento").toLocalDate());
+                alumno.setEstado(rs.getBoolean("estado"));
+                alumnos.add(alumno);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla inscripcion");
+        }
+         
+          return alumnos;       
+        
+    }
+
 }
