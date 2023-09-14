@@ -75,25 +75,30 @@ public class GestionUnivers {
          AlumnoData ad= new AlumnoData();
           MateriaData md=new MateriaData();
           InscripcionData id=new InscripcionData();
-         /* 
-          Alumno alf= ad.buscarAlumno(2);
-          Materia fla=md.buscarMateria(4);
-          Inscripcion inscs=new Inscripcion(alf,fla,7);    //inscripcion del (alumno, materia y nota)
+          
+         /* Alumno alf= ad.buscarAlumno(1);
+          Materia fla=md.buscarMateria(1);
+          Inscripcion insc=new Inscripcion(alf,fla,8);    //inscripcion del (alumno, materia y nota)
           */
           //id.guardarInscripcion(insc); 
           //id.actualizarNota(2, 4, 8);
           //id.deletearMateria(2, 4);
           
-          for(Inscripcion insc:id.ObtenerInscripciones()){
+          /*for(Inscripcion insc:id.ObtenerInscripciones()){
               
 
               System.out.println("id "+insc.getidInscripcion());
               System.out.println("Apellido "+insc.getAlumno().getApellido());
               System.out.println("Materia "+insc.getMateria().getNombre());
               System.out.println("----------------------------------------------");
-               }
+               }*/
           
-          
+          for (Materia materia:id.ObtenerMateriasNoCursadas(4)){
+
+              System.out.println("Nombre "+materia.getNombre());
+            
+              System.out.println("----------------------------------------------");
+          }
     }
     
     
