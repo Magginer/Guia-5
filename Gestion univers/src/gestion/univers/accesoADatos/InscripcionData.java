@@ -5,9 +5,7 @@
  */
 package gestion.univers.accesoADatos;
 
-import gestion.univers.entidades.Alumno;
-import gestion.univers.entidades.Inscripcion;
-import gestion.univers.entidades.Materia;
+import gestion.univers.entidades.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -174,11 +172,32 @@ public class InscripcionData {
     }
 
     public List<Materia> ObtenerMateriasCursadas(int IdAlumno) {
+
+        ArrayList<Materia> materias=new ArrayList<>();
         
-        String sql="SELECET inscripcion.idmateria, nombre, año FROM inscripcion,"
+        String sql = "SELECET inscripcion.idmateria, nombre, año FROM inscripcion,"
                 + "materia WHERE inscripcion.idmateria = materia.idmateria"
                 + "AND inscripcion.idalumno = ?";
-        
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, IdAlumno);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Materia materia = new Materia();
+                materia.setIdMateria(rs.getInt("idmateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("año"));
+                materias.add(materia);
+
+            }
+
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla inscripcion");
+        }
+return materias;
     }
 
 }
