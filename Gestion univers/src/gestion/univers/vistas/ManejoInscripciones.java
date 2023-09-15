@@ -43,6 +43,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Tabladematerias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,94 +89,41 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(Tabladematerias);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 352, 165));
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Formulario de inscripcion");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 6, 162, 28));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Seleccion de alumno");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 61, 130, -1));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Listado de materias");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 116, 144, -1));
 
         Materiainscriptaboton.setText("Materia inscripta");
+        getContentPane().add(Materiainscriptaboton, new org.netbeans.lib.awtextra.AbsoluteConstraints(39, 150, -1, -1));
 
         MateriaNoinscriptaboton.setText("Materia no inscripta");
+        getContentPane().add(MateriaNoinscriptaboton, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 150, -1, -1));
 
         Comboalumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboalumnoActionPerformed(evt);
             }
         });
+        getContentPane().add(Comboalumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 56, 175, -1));
 
         Inscribirboton.setText("Inscribir");
+        getContentPane().add(Inscribirboton, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 393, -1, -1));
 
         Salirinscboton.setText("Salir");
+        getContentPane().add(Salirinscboton, new org.netbeans.lib.awtextra.AbsoluteConstraints(289, 393, -1, -1));
 
         Anularinscboton.setText("Anular inscripcion");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(Materiainscriptaboton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(MateriaNoinscriptaboton)
-                .addGap(50, 50, 50))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(Comboalumno, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(116, 116, 116)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(21, 21, 21)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(119, 119, 119)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(95, 95, 95)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addComponent(Inscribirboton)
-                        .addGap(18, 18, 18)
-                        .addComponent(Anularinscboton)
-                        .addGap(18, 18, 18)
-                        .addComponent(Salirinscboton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(Comboalumno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Materiainscriptaboton)
-                    .addComponent(MateriaNoinscriptaboton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Inscribirboton)
-                    .addComponent(Anularinscboton)
-                    .addComponent(Salirinscboton))
-                .addGap(33, 33, 33))
-        );
+        getContentPane().add(Anularinscboton, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 393, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
