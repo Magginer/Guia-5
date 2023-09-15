@@ -96,7 +96,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 6, 162, 28));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Seleccion de alumno");
+        jLabel2.setText("Seleccion de alumnos");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 61, 130, -1));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
