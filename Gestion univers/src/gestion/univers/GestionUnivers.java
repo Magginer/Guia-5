@@ -70,11 +70,11 @@ public class GestionUnivers {
              System.out.println("-------------------------------");
           System.out.println("NOMBRE "+materia.getNombre());
           System.out.println("AÑO "+materia.getAnio());
-          }*/
+          }/*
  
-         AlumnoData ad= new AlumnoData();
+         /*AlumnoData ad= new AlumnoData();
           MateriaData md=new MateriaData();
-          InscripcionData id=new InscripcionData();
+          InscripcionData id=new InscripcionData();/*
           
          /* Alumno alf= ad.buscarAlumno(1);
           Materia fla=md.buscarMateria(1);
@@ -93,12 +93,12 @@ public class GestionUnivers {
               System.out.println("----------------------------------------------");
                }*/
           
-          for (Materia materia:id.ObtenerMateriasNoCursadas(4)){
+         /* for (Materia materia:id.ObtenerMateriasNoCursadas(4)){
 
               System.out.println("Nombre "+materia.getNombre());
             
               System.out.println("----------------------------------------------");
-          }
+          }*/
     }
     
     
