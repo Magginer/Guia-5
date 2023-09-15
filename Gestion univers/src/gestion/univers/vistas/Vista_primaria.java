@@ -31,7 +31,7 @@ public class Vista_primaria extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         JMForAlum = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jMForMate = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -64,7 +64,7 @@ public class Vista_primaria extends javax.swing.JFrame {
 
         jMenuBar1.add(JMForAlum);
 
-        jMenu2.setText("Materias");
+        jMForMate.setText("Materias");
 
         jMenuItem2.setText("Formulario de Materias");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -72,9 +72,9 @@ public class Vista_primaria extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMForMate.add(jMenuItem2);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMForMate);
 
         jMenu3.setText("Administracion");
 
@@ -192,7 +192,7 @@ public class Vista_primaria extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMForAlum;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMForMate;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
