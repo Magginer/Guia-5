@@ -39,11 +39,11 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         botondeestado = new javax.swing.JRadioButton();
         fechadenacimiento = new com.toedter.calendar.JDateChooser();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        Buscardocumentoboton = new javax.swing.JButton();
+        Eliminaralumnoboton = new javax.swing.JButton();
+        Nuevoalumnoboton = new javax.swing.JButton();
+        Saliralumnoboton = new javax.swing.JButton();
+        Guardaralumnoboton = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -76,15 +76,15 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setText("Buscar");
+        Buscardocumentoboton.setText("Buscar");
 
-        jButton2.setText("Eliminar");
+        Eliminaralumnoboton.setText("Eliminar");
 
-        jButton3.setText("Nuevo");
+        Nuevoalumnoboton.setText("Nuevo");
 
-        jButton4.setText("Salir");
+        Saliralumnoboton.setText("Salir");
 
-        jButton5.setText("Guardar");
+        Guardaralumnoboton.setText("Guardar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,7 +105,7 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(documentotext, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                                .addComponent(jButton1))
+                                .addComponent(Buscardocumentoboton))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -120,13 +120,13 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
                 .addGap(22, 22, 22))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(Nuevoalumnoboton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(Eliminaralumnoboton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(Guardaralumnoboton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(Saliralumnoboton)
                 .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
@@ -140,7 +140,7 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(documentotext, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(Buscardocumentoboton))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,10 +162,10 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
                         .addComponent(fechadenacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(Saliralumnoboton)
+                    .addComponent(Guardaralumnoboton)
+                    .addComponent(Eliminaralumnoboton)
+                    .addComponent(Nuevoalumnoboton))
                 .addGap(40, 40, 40))
         );
 
@@ -178,15 +178,15 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Buscardocumentoboton;
+    private javax.swing.JButton Eliminaralumnoboton;
+    private javax.swing.JButton Guardaralumnoboton;
+    private javax.swing.JButton Nuevoalumnoboton;
+    private javax.swing.JButton Saliralumnoboton;
     private javax.swing.JTextField apellidotext;
     private javax.swing.JRadioButton botondeestado;
     private javax.swing.JTextField documentotext;
     private com.toedter.calendar.JDateChooser fechadenacimiento;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
