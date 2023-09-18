@@ -15,17 +15,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-
-
 /**
  *
  * @author javie
  */
 public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
-    
-   Connection con = Conexion.getConexion();
-    
-    
+
+    Connection con = Conexion.getConexion();
+
     public VistaFormularioAlumno() {
         initComponents();
     }
@@ -221,24 +218,22 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
     private void BuscardocumentobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscardocumentobotonActionPerformed
         // TODO add your handling code here:
-       int dni= Integer.parseInt(documentotext.getText());
-       
-       AlumnoData alu= new AlumnoData();
-       Alumno alumno = alu.buscarAlumnoPorDni(dni);
-       if(alumno!=null){ 
-       apellidotext.setText(alumno.getApellido());
-       nombretext.setText(alumno.getNombre());
-       botondeestado.setSelected(true);
-       FechaAlumno.setDate(Date.valueOf(alumno.getFechadenacimiento()));  
-       
-       
-       
-       
-        }else{
-            
+        int dni = Integer.parseInt(documentotext.getText());
+
+        AlumnoData alu = new AlumnoData();
+        Alumno alumno = alu.buscarAlumnoPorDni(dni);
+        if (alumno != null) {
+            apellidotext.setText(alumno.getApellido());
+            nombretext.setText(alumno.getNombre());
+
+            FechaAlumno.setDate(Date.valueOf(alumno.getFechadenacimiento()));
+
+            if (alumno.isEstado()==true) {
+                botondeestado.setSelected(true);
+            } else {
+                botondeestado.setSelected(false);
             }
-       
-      
+        }
     }//GEN-LAST:event_BuscardocumentobotonActionPerformed
 
     private void apellidotextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidotextActionPerformed
@@ -251,9 +246,8 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
     private void botondeestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botondeestadoActionPerformed
         // TODO add your handling code here:
-        
-        
-        
+
+
     }//GEN-LAST:event_botondeestadoActionPerformed
 
 
