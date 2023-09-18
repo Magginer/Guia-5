@@ -225,7 +225,6 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         if (alumno != null) {
             apellidotext.setText(alumno.getApellido());
             nombretext.setText(alumno.getNombre());
-
             FechaAlumno.setDate(Date.valueOf(alumno.getFechadenacimiento()));
 
             if (alumno.isEstado()==true) {
