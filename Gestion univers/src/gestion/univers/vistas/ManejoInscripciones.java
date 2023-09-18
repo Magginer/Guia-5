@@ -41,8 +41,6 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
 
         Tabladematerias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
