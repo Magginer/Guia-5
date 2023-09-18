@@ -167,7 +167,7 @@ public class AlumnoData {
                 alumno.setEstado(true);
 
             } else {
-                JOptionPane.showMessageDialog(null, "No existe un alumno con ese ID");
+                JOptionPane.showMessageDialog(null, "No existe un alumno con ese DNI");
             }
             ps.close();
         } catch (SQLException ex) {
