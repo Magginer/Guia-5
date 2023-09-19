@@ -121,6 +121,11 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         Saliralumnoboton.setText("Salir");
 
         Guardaralumnoboton.setText("Guardar");
+        Guardaralumnoboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardaralumnobotonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -251,6 +256,7 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
     private void botondeestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botondeestadoActionPerformed
         // TODO add your handling code here:
+        
 
 
     }//GEN-LAST:event_botondeestadoActionPerformed
@@ -265,6 +271,23 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         botondeestado.setSelected(false);
         FechaAlumno.setDateFormatString(""); // <--- OJO QUE TE JODE ESTA!!!!
     }//GEN-LAST:event_NuevoalumnobotonActionPerformed
+
+    private void GuardaralumnobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardaralumnobotonActionPerformed
+        // TODO add your handling code here
+        Alumno alumno = null;
+        
+        
+        AlumnoData alu = new AlumnoData();
+        
+        documentotext.getText();
+        apellidotext.getText();
+        nombretext.getText();
+        botondeestado.setSelected(true);
+        FechaAlumno.getDate();
+        
+        alu.guardarAlumno(alumno);
+        
+    }//GEN-LAST:event_GuardaralumnobotonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
