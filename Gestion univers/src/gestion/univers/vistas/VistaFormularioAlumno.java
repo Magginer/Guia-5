@@ -270,7 +270,19 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_NuevoalumnobotonActionPerformed
 
     private void GuardaralumnobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardaralumnobotonActionPerformed
-       //" OLA K ASE"
+       
+        Alumno alumno = null;
+        
+        
+        AlumnoData alu = new AlumnoData();
+        
+        documentotext.getText();
+        apellidotext.getText();
+        nombretext.getText();
+        botondeestado.setSelected(true);
+        FechaAlumno.getDate();
+        
+        alu.guardarAlumno(alumno);
        
     }//GEN-LAST:event_GuardaralumnobotonActionPerformed
 
