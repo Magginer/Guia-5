@@ -159,7 +159,7 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
+                        .addGap(50, 50, 50)
                         .addComponent(botondeestado))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
@@ -256,9 +256,6 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
     private void botondeestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botondeestadoActionPerformed
         // TODO add your handling code here:
-        
-
-
     }//GEN-LAST:event_botondeestadoActionPerformed
 
     private void NuevoalumnobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoalumnobotonActionPerformed
@@ -274,19 +271,7 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
     private void GuardaralumnobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardaralumnobotonActionPerformed
         // TODO add your handling code here
-        Alumno alumno = null;
-        
-        
-        AlumnoData alu = new AlumnoData();
-        
-        documentotext.getText();
-        apellidotext.getText();
-        nombretext.getText();
-        botondeestado.setSelected(true);
-        FechaAlumno.getDate();
-        
-        alu.guardarAlumno(alumno);
-        
+       
     }//GEN-LAST:event_GuardaralumnobotonActionPerformed
 
 
