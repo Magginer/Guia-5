@@ -120,6 +120,19 @@ public class AlumnoData {
         }
     }
 
+    public void botonestado(int dni) {
+        String sql = "UPDATE alumno SET estado = 1 WHERE dni=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            int exito = ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+            
+         }   
+    
     public Alumno buscarAlumno(int id) {
 
         String sql = "SELECT  dni, apellido, nombre, fechanacimiento FROM alumno WHERE idAlumno=? AND estado=1";

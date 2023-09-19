@@ -238,7 +238,7 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
             nombretext.setText(alumno.getNombre());
             FechaAlumno.setDate(Date.valueOf(alumno.getFechadenacimiento()));
 
-            if (alumno.isEstado()==true) {
+            if (alumno.isEstado() == true) {
                 botondeestado.setSelected(true);
             } else {
                 botondeestado.setSelected(false);
@@ -256,12 +256,26 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
     private void botondeestadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botondeestadoActionPerformed
         // TODO add your handling code here:
+        int dni = Integer.parseInt(documentotext.getText());
+
+        AlumnoData bot = new AlumnoData();
+        boolean boton;
+        boton = false;
+
+        if (boton == true) {
+
+            bot.botonestado(dni);
+
+        } else {
+            boton = false;
+
     }//GEN-LAST:event_botondeestadoActionPerformed
+    }
 
     private void NuevoalumnobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoalumnobotonActionPerformed
-        
+
         AlumnoData alu = new AlumnoData();
-   
+
         documentotext.setText("");
         apellidotext.setText("");
         nombretext.setText("");
@@ -270,20 +284,19 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_NuevoalumnobotonActionPerformed
 
     private void GuardaralumnobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardaralumnobotonActionPerformed
-       
+
         Alumno alumno = null;
-        
-        
+
         AlumnoData alu = new AlumnoData();
-        
+
         documentotext.getText();
         apellidotext.getText();
         nombretext.getText();
         botondeestado.setSelected(true);
         FechaAlumno.getDate();
-        
+
         alu.guardarAlumno(alumno);
-       
+
     }//GEN-LAST:event_GuardaralumnobotonActionPerformed
 
 
