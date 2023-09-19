@@ -270,7 +270,7 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_NuevoalumnobotonActionPerformed
 
     private void GuardaralumnobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardaralumnobotonActionPerformed
-        // TODO add your handling code here
+       //" OLA K ASE"
        
     }//GEN-LAST:event_GuardaralumnobotonActionPerformed
 
