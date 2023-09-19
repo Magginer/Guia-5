@@ -108,6 +108,11 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         Inscribirboton.setText("Inscribir");
 
         Salirinscboton.setText("Salir");
+        Salirinscboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirinscbotonActionPerformed(evt);
+            }
+        });
 
         Anularinscboton.setText("Anular inscripcion");
 
@@ -174,6 +179,12 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
     private void ComboalumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboalumnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboalumnoActionPerformed
+
+    private void SalirinscbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirinscbotonActionPerformed
+     
+        System.exit(0);
+        
+    }//GEN-LAST:event_SalirinscbotonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

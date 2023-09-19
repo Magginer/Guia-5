@@ -119,6 +119,11 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         });
 
         Saliralumnoboton.setText("Salir");
+        Saliralumnoboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaliralumnobotonActionPerformed(evt);
+            }
+        });
 
         Guardaralumnoboton.setText("Guardar");
         Guardaralumnoboton.addActionListener(new java.awt.event.ActionListener() {
@@ -285,19 +290,28 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
     private void GuardaralumnobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardaralumnobotonActionPerformed
 
-        Alumno alumno = null;
 
         AlumnoData alu = new AlumnoData();
+        Alumno alumno = new Alumno();
 
         documentotext.getText();
         apellidotext.getText();
         nombretext.getText();
-        botondeestado.setSelected(true);
+        botondeestado.isSelected();
         FechaAlumno.getDate();
-
-        alu.guardarAlumno(alumno);
+        
+                
+                
+      alu.guardarAlumno(alumno);
 
     }//GEN-LAST:event_GuardaralumnobotonActionPerformed
+
+    private void SaliralumnobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaliralumnobotonActionPerformed
+    
+        System.exit(0);
+        
+        
+    }//GEN-LAST:event_SaliralumnobotonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -127,7 +127,9 @@ public class AlumnosXmaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_materiacomboActionPerformed
 
     private void salirconsultabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirconsultabotonActionPerformed
-        // TODO add your handling code here:
+    
+        System.exit(0);
+        
     }//GEN-LAST:event_salirconsultabotonActionPerformed
 
 

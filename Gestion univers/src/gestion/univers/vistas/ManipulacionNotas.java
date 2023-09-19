@@ -133,7 +133,9 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void salirnotabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirnotabotonActionPerformed
-        // TODO add your handling code here:
+     
+        System.exit(0);
+        
     }//GEN-LAST:event_salirnotabotonActionPerformed
 
 

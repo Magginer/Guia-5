@@ -71,6 +71,11 @@ public class VistaFormularioMateria extends javax.swing.JInternalFrame {
         Buscarcodigoboton.setText("Buscar");
 
         Salirmateriaboton.setText("Salir");
+        Salirmateriaboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirmateriabotonActionPerformed(evt);
+            }
+        });
 
         Eliminarmateriaboton.setText("Eliminar");
 
@@ -158,6 +163,12 @@ public class VistaFormularioMateria extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void SalirmateriabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirmateriabotonActionPerformed
+   
+        System.exit(0);
+        
+    }//GEN-LAST:event_SalirmateriabotonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
