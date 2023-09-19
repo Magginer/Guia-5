@@ -13,6 +13,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -111,6 +112,11 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         Eliminaralumnoboton.setText("Eliminar");
 
         Nuevoalumnoboton.setText("Nuevo");
+        Nuevoalumnoboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NuevoalumnobotonActionPerformed(evt);
+            }
+        });
 
         Saliralumnoboton.setText("Salir");
 
@@ -216,6 +222,7 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_documentotextActionPerformed
 
     private void BuscardocumentobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscardocumentobotonActionPerformed
+        /*BOTON DE BUSQUEDA POR DNI DEL FORMULARIO*/
         // TODO add your handling code here:
         int dni = Integer.parseInt(documentotext.getText());
 
@@ -247,6 +254,17 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
 
     }//GEN-LAST:event_botondeestadoActionPerformed
+
+    private void NuevoalumnobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoalumnobotonActionPerformed
+        
+        AlumnoData alu = new AlumnoData();
+   
+        documentotext.setText("");
+        apellidotext.setText("");
+        nombretext.setText("");
+        botondeestado.setSelected(false);
+        FechaAlumno.setDateFormatString(""); // <--- OJO QUE TE JODE ESTA!!!!
+    }//GEN-LAST:event_NuevoalumnobotonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
