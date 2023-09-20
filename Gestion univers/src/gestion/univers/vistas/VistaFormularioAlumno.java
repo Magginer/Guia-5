@@ -334,7 +334,7 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         apellidotext.setText("");
         nombretext.setText("");
         botondeestado.setSelected(false);
-        FechaAlumno.setDateFormatString(""); // <--- OJO QUE TE JODE ESTA!!!!
+        FechaAlumno.setCalendar(null); // <--- OJO QUE TE JODE ESTA!!!!
         
     }//GEN-LAST:event_limpiarbotonMouseClicked
 
