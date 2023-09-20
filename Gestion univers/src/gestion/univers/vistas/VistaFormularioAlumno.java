@@ -9,6 +9,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import javax.swing.JOptionPane;
 
 /**
@@ -344,15 +346,15 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         String apellido= apellidotext.getText();
         String nombre= nombretext.getText();
         boolean estado= botondeestado.isEnabled();
-        Date fecha = (Date) FechaAlumno.getDate();
-        
+        LocalDate fecha= FechaAlumno.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();  // error aqui al guardar alumno
+        Date fech = Date.valueOf(fecha);
         Alumno alumno= new Alumno();
         
         alumno.setDni(dni);
         alumno.setApellido(apellido);
         alumno.setNombre(nombre);
         alumno.setEstado(estado);
-        alumno.setFechadenacimiento(fecha.toLocalDate());    // tengo dudas aqui 
+        alumno.setFechadenacimiento(fecha);    // tengo dudas aqui 
         
         AlumnoData alu = new AlumnoData();
         
