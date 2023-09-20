@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gestion.univers.vistas;
 
 import gestion.univers.accesoADatos.AlumnoData;
@@ -13,7 +9,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
@@ -113,6 +108,11 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         Eliminaralumnoboton.setText("Eliminar");
 
         Nuevoalumnoboton.setText("Nuevo Alumno");
+        Nuevoalumnoboton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NuevoalumnobotonMouseClicked(evt);
+            }
+        });
         Nuevoalumnoboton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NuevoalumnobotonActionPerformed(evt);
@@ -319,13 +319,15 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
     private void SaliralumnobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaliralumnobotonActionPerformed
     
-        this.dispose();
+        this.dispose();  // cierra la ventana pero no el programa
         
         
     }//GEN-LAST:event_SaliralumnobotonActionPerformed
 
     private void limpiarbotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpiarbotonMouseClicked
       
+        // BOTON LIMPIAR , limpia todo el formulario 
+        
          AlumnoData alu = new AlumnoData();
 
         documentotext.setText("");
@@ -335,6 +337,27 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         FechaAlumno.setDateFormatString(""); // <--- OJO QUE TE JODE ESTA!!!!
         
     }//GEN-LAST:event_limpiarbotonMouseClicked
+
+    private void NuevoalumnobotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoalumnobotonMouseClicked
+        
+        int dni = Integer.parseInt(documentotext.getText());
+        String apellido= apellidotext.getText();
+        String nombre= nombretext.getText();
+        boolean estado= botondeestado.isEnabled();
+        Date fecha = (Date) FechaAlumno.getDate();
+        
+        Alumno alumno= new Alumno();
+        
+        alumno.setDni(dni);
+        alumno.setApellido(apellido);
+        alumno.setNombre(nombre);
+        alumno.setEstado(estado);
+        alumno.setFechadenacimiento(fecha.toLocalDate());    // tengo dudas aqui 
+        
+        AlumnoData alu = new AlumnoData();
+        
+        alu.guardarAlumno(alumno);
+    }//GEN-LAST:event_NuevoalumnobotonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

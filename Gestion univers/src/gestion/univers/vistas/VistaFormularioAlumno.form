@@ -232,6 +232,7 @@
         <Property name="text" type="java.lang.String" value="Nuevo Alumno"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="NuevoalumnobotonMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NuevoalumnobotonActionPerformed"/>
       </Events>
     </Component>
