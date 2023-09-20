@@ -166,7 +166,7 @@ public class VistaFormularioMateria extends javax.swing.JInternalFrame {
 
     private void SalirmateriabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirmateriabotonActionPerformed
    
-        System.exit(0);
+        this.dispose();
         
     }//GEN-LAST:event_SalirmateriabotonActionPerformed
 

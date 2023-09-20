@@ -182,7 +182,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
 
     private void SalirinscbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirinscbotonActionPerformed
      
-        System.exit(0);
+         this.dispose();
         
     }//GEN-LAST:event_SalirinscbotonActionPerformed
 

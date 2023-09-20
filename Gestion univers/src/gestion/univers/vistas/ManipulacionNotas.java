@@ -134,7 +134,7 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
 
     private void salirnotabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirnotabotonActionPerformed
      
-        System.exit(0);
+         this.dispose();
         
     }//GEN-LAST:event_salirnotabotonActionPerformed
 
