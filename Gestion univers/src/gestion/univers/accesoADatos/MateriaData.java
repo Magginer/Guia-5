@@ -140,7 +140,7 @@ public class MateriaData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
             
          }   
-        
+        //lala
         
     }
       
