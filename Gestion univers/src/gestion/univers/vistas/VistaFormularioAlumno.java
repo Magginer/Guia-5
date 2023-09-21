@@ -291,7 +291,7 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
             bot.botonestado(dni);
 
         } else {
-            boton = false;
+            bot.botonestadoinactivo(dni);
 
     }//GEN-LAST:event_botondeestadoActionPerformed
     }

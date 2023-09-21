@@ -63,7 +63,7 @@ public class AlumnoData {
     public void modificarAlumno(Alumno alumno) {
 
         String sql = "UPDATE alumno SET dni=?, apellido=?, nombre=?, fechanacimiento=?"
-                + "WHERE idAlumno=?";
+                + "WHERE dni=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -133,6 +133,23 @@ public class AlumnoData {
             
          }   
     } 
+    
+    public void botonestadoinactivo(int dni) {
+     String sql = "UPDATE alumno SET estado = 0 WHERE dni=?";   
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            int exito = ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+            
+         }   
+        
+        
+    }
+    
     
     public Alumno buscarAlumno(int id) {
 
