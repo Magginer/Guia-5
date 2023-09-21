@@ -97,6 +97,11 @@ public class VistaFormularioMateria extends javax.swing.JInternalFrame {
         Eliminarmateriaboton.setText("Eliminar");
 
         Nuevamateriaboton.setText("Nueva Materia");
+        Nuevamateriaboton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NuevamateriabotonMouseClicked(evt);
+            }
+        });
 
         jButton1.setText("Limpiar");
 
@@ -231,7 +236,26 @@ public class VistaFormularioMateria extends javax.swing.JInternalFrame {
         } else {
             bot.botonestadoinactivo(id);
     }//GEN-LAST:event_EstadomateriabotonActionPerformed
-    }
+    }    
+    private void NuevamateriabotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevamateriabotonMouseClicked
+        
+        int id = Integer.parseInt(codigotext.getText());
+        
+        String nombre= nombrematetext.getText();
+        int anio= Integer.parseInt(aniotext.getText());
+        boolean estado = Estadomateriaboton.isEnabled();
+        
+        Materia mate = new Materia();
+        mate.setNombre(nombre);
+        mate.setAnio(anio);
+        mate.setEstado(estado);
+        
+        MateriaData mated= new MateriaData();
+        mated.guardarMateria(mate);
+        
+        
+    }//GEN-LAST:event_NuevamateriabotonMouseClicked
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
