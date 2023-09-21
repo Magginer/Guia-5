@@ -15,6 +15,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -142,6 +144,27 @@ public class MateriaData {
             
          }   
         //lala
+        
+    }
+    
+    public void deleteMateria(int IdMateria){
+        String sql= "DELETE FROM materia WHERE idmateria=?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, IdMateria);
+            int exito= ps.executeUpdate(sql);
+            
+            if (exito==1) {
+                JOptionPane.showMessageDialog(null, "Alumno eliminado");               
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error al entrar a la tabla materia");
+        }
+        
+        
+        
         
     }
       

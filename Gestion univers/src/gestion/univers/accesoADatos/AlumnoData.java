@@ -157,10 +157,17 @@ public class AlumnoData {
         try {
             PreparedStatement ps= con.prepareStatement(sql);
             ps.setInt(1, dni);
-            ps.executeUpdate();
+            int exito =ps.executeUpdate();
+            
+            if (exito==1) {
+                JOptionPane.showMessageDialog(null, "alumno eliminado");
+                
+            }
+    
+        
             
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,"Alumno eliminado" +ex);
+            JOptionPane.showMessageDialog(null,"error al acceder a tabla alumno");
         }
         
         
