@@ -78,7 +78,7 @@ public class AlumnoData {
             System.out.println("alumno modificado");
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Alumno Modificado");
-                System.out.println(alumno.getIdAlumno());
+             
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno"+ex);
