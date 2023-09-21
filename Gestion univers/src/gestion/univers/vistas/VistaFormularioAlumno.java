@@ -253,21 +253,33 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
     private void BuscardocumentobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscardocumentobotonActionPerformed
         /*BOTON DE BUSQUEDA POR DNI DEL FORMULARIO*/
         // TODO add your handling code here:
-        int dni = Integer.parseInt(documentotext.getText());
-
-        AlumnoData alu = new AlumnoData();
-        Alumno alumno = alu.buscarAlumnoPorDni(dni);
-        if (alumno != null) {
-            apellidotext.setText(alumno.getApellido());
-            nombretext.setText(alumno.getNombre());
-            FechaAlumno.setDate(Date.valueOf(alumno.getFechadenacimiento()));
-
-            if (alumno.isEstado() == true) {
-                botondeestado.setSelected(true);
-            } else {
-                botondeestado.setSelected(false);
+        
+        if (documentotext.getText()!=null)  {  
+            
+            
+            int dni = Integer.parseInt(documentotext.getText());   
+            
+            
+            
+            
+            AlumnoData alu = new AlumnoData();
+            Alumno alumno = alu.buscarAlumnoPorDni(dni);
+            if (alumno != null) {
+                apellidotext.setText(alumno.getApellido());
+                nombretext.setText(alumno.getNombre());
+                FechaAlumno.setDate(Date.valueOf(alumno.getFechadenacimiento()));
+                
+                if (alumno.isEstado() == true) {
+                    botondeestado.setSelected(true);
+                } else {
+                    botondeestado.setSelected(false);
+                }
+                
             }
-        }
+        }else {
+            JOptionPane.showMessageDialog(null, "Ingrese un DNI");
+        }   
+        
     }//GEN-LAST:event_BuscardocumentobotonActionPerformed
 
     private void apellidotextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidotextActionPerformed
@@ -303,19 +315,23 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
     private void GuardaralumnobotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardaralumnobotonActionPerformed
 
-
-        AlumnoData alu = new AlumnoData();
-        Alumno alumno = new Alumno();
-
-        documentotext.getText();
-        apellidotext.getText();
-        nombretext.getText();
-        botondeestado.isSelected();
-        FechaAlumno.getDate();
+        int dni = Integer.parseInt(documentotext.getText());
+        String apellido= apellidotext.getText();
+        String nombre= nombretext.getText();
+        boolean estado= botondeestado.isEnabled();
+        LocalDate fecha= FechaAlumno.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();  // error aqui al guardar alumno
+        Date fech = Date.valueOf(fecha);
+        Alumno alumno= new Alumno();
         
-                
-                
-      alu.guardarAlumno(alumno);
+        alumno.setApellido(apellido);
+        alumno.setNombre(nombre);
+        alumno.setEstado(estado);
+        alumno.setFechadenacimiento(fecha);    // tengo dudas aqui 
+        
+        AlumnoData alu = new AlumnoData();
+        
+     
+        alu.modificarAlumno(alumno);
 
     }//GEN-LAST:event_GuardaralumnobotonActionPerformed
 

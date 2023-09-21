@@ -62,7 +62,7 @@ public class AlumnoData {
 
     public void modificarAlumno(Alumno alumno) {
 
-        String sql = "UPDATE alumno SET dni=?, apellido=?, nombre=?, fechanacimiento=?"
+        String sql = "UPDATE alumno SET apellido=?, nombre=?, fechanacimiento=?, estado=?"
                 + "WHERE dni=?";
 
         try {
