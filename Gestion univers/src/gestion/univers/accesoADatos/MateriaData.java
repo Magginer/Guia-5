@@ -116,7 +116,7 @@ public class MateriaData {
     
      public Materia buscarMateria(int id) {
 
-        String sql = "SELECT  nombre,año FROM materia WHERE idmateria=? AND estado=1";
+        String sql = "SELECT  nombre,año,estado FROM materia WHERE id=?";
         Materia materia = null;
         try {
             PreparedStatement ps = con.prepareStatement(sql);

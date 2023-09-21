@@ -62,8 +62,8 @@ public class AlumnoData {
 
     public void modificarAlumno(Alumno alumno) {
 
-        String sql = "UPDATE alumno SET apellido=?, nombre=?, fechanacimiento=?, estado=?"
-                + "WHERE dni=?";
+        String sql = "UPDATE alumno SET dni=?, apellido=?, nombre=?, fechanacimiento=?, estado=? WHERE idalumno=?";
+               
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -71,16 +71,17 @@ public class AlumnoData {
             ps.setString(2, alumno.getApellido());
             ps.setString(3, alumno.getNombre());
             ps.setDate(4, Date.valueOf(alumno.getFechadenacimiento()));
-            ps.setInt(5, alumno.getIdAlumno());
+            ps.setBoolean(5, alumno.isEstado());
+            ps.setInt(6, alumno.getIdAlumno());
 
             int exito = ps.executeUpdate();
-
+            System.out.println("alumno modificado");
             if (exito == 1) {
                 JOptionPane.showMessageDialog(null, "Alumno Modificado");
-
+                System.out.println(alumno.getIdAlumno());
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno"+ex);
         }
     }
 
