@@ -114,6 +114,37 @@ public class MateriaData {
         }
     }
     
+      public void botonestado(int id) {
+        String sql = "UPDATE alumno SET estado = 1 WHERE idmateria=?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito = ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+            
+         }   
+    } 
+    
+    public void botonestadoinactivo(int id) {
+     String sql = "UPDATE alumno SET estado = 0 WHERE idmateria=?";   
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            int exito = ps.executeUpdate();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+            
+         }   
+        
+        
+    }
+      
+      
      public Materia buscarMateria(int id) {
 
         String sql = "SELECT  nombre,año,estado FROM materia WHERE id=?";
@@ -135,7 +166,7 @@ public class MateriaData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia");
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia"+ex);
         }
         return materia;
     }

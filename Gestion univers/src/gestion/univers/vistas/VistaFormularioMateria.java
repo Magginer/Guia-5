@@ -70,6 +70,12 @@ public class VistaFormularioMateria extends javax.swing.JInternalFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Codigo");
 
+        Estadomateriaboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EstadomateriabotonActionPerformed(evt);
+            }
+        });
+
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
         Guardarmateriaboton.setText("Guardar Cambios");
@@ -184,33 +190,48 @@ public class VistaFormularioMateria extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private int idmateria;
-    
-    
-    
+
+
     private void SalirmateriabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirmateriabotonActionPerformed
-   
+
         this.dispose();
-        
+
     }//GEN-LAST:event_SalirmateriabotonActionPerformed
 
     private void BuscarcodigobotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarcodigobotonMouseClicked
-    
+
         int id = Integer.parseInt(codigotext.getText());
-        
+
         MateriaData materia = new MateriaData();
         Materia mate = materia.buscarMateria(id);
-        
-        if (mate!= null) {
-            IdMateria=mate.getIdMateria();
+
+        if (mate != null) {
+            IdMateria = mate.getIdMateria();
             nombrematetext.setText(mate.getNombre());
             aniotext.setText(String.valueOf(mate.getAnio()));
             Estadomateriaboton.setSelected(mate.isEstado());
-           
-           //lalala
-           
+
+            //lalala
         }
-        
+
     }//GEN-LAST:event_BuscarcodigobotonMouseClicked
+
+    private void EstadomateriabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EstadomateriabotonActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(codigotext.getText());
+
+        MateriaData bot = new MateriaData();
+        boolean boton;
+        boton = false;
+
+        if (boton == true) {
+
+            bot.botonestado(id);
+
+        } else {
+            bot.botonestadoinactivo(id);
+    }//GEN-LAST:event_EstadomateriabotonActionPerformed
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
