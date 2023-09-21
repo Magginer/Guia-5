@@ -151,6 +151,20 @@ public class AlumnoData {
         
     }
     
+    public void deleteaAlumno(int dni){
+        String sql="DELETE FROM alumno WHERE dni =?";
+        
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ps.setInt(1, dni);
+            ps.executeUpdate();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Alumno eliminado" +ex);
+        }
+        
+        
+    }
     
     public Alumno buscarAlumno(int id) {
 
