@@ -14,6 +14,8 @@ import gestion.univers.entidades.Materia;
  */
 public class VistaFormularioMateria extends javax.swing.JInternalFrame {
 
+    private int IdMateria;
+
     /**
      * Creates new form VistaFormularioMateria
      */
@@ -193,19 +195,19 @@ public class VistaFormularioMateria extends javax.swing.JInternalFrame {
 
     private void BuscarcodigobotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BuscarcodigobotonMouseClicked
     
-        int codigo = Integer.parseInt(codigotext.getText());
+        int id = Integer.parseInt(codigotext.getText());
         
         MateriaData materia = new MateriaData();
-        Materia mate = materia.buscarMateria(codigo);
+        Materia mate = materia.buscarMateria(id);
+        
         if (mate!= null) {
+            IdMateria=mate.getIdMateria();
             nombrematetext.setText(mate.getNombre());
-            Integer.parseInt(aniotext.getText());
-
-            if (mate.isEstado() == true) {
-                Estadomateriaboton.setSelected(true);
-            } else {
-                Estadomateriaboton.setSelected(false);
-            }
+            aniotext.setText(String.valueOf(mate.getAnio()));
+            Estadomateriaboton.setSelected(mate.isEstado());
+           
+           //lalala
+           
         }
         
     }//GEN-LAST:event_BuscarcodigobotonMouseClicked
