@@ -7,6 +7,7 @@ package gestion.univers.vistas;
 
 import gestion.univers.accesoADatos.MateriaData;
 import gestion.univers.entidades.Materia;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -246,14 +247,21 @@ public class VistaFormularioMateria extends javax.swing.JInternalFrame {
         boolean estado = Estadomateriaboton.isEnabled();
         
         Materia mate = new Materia();
+        
+       
+        
+        if(id == IdMateria) {
+        JOptionPane.showMessageDialog(null, "este codigo ya contempla una materia");
+            
+        }else {
+        mate.setIdMateria(id);
         mate.setNombre(nombre);
         mate.setAnio(anio);
-        mate.setEstado(estado);
-        
+        mate.setEstado(estado); 
         MateriaData mated= new MateriaData();
         mated.guardarMateria(mate);
         
-        
+     }   
     }//GEN-LAST:event_NuevamateriabotonMouseClicked
 
 
