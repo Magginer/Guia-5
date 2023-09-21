@@ -90,7 +90,7 @@ public class MateriaData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Materia Inactiva");
+                JOptionPane.showMessageDialog(null, "Materia desactivada");
             }
 
         } catch (SQLException ex) {
@@ -156,7 +156,7 @@ public class MateriaData {
             int exito= ps.executeUpdate(sql);
             
             if (exito==1) {
-                JOptionPane.showMessageDialog(null, "Alumno eliminado");               
+                JOptionPane.showMessageDialog(null, "materia eliminada");               
             }
             
         } catch (SQLException ex) {
