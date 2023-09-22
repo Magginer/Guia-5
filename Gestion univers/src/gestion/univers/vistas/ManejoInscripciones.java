@@ -5,6 +5,14 @@
  */
 package gestion.univers.vistas;
 
+import gestion.univers.accesoADatos.AlumnoData;
+import gestion.univers.accesoADatos.Conexion;
+import gestion.univers.entidades.Alumno;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  *
  * @author javie
@@ -14,8 +22,18 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
     /**
      * Creates new form ManejoInscripciones
      */
+    
+    Connection con = null;
+    ArrayList Alista;
+    AlumnoData alumno = new AlumnoData();
+    
     public ManejoInscripciones() {
         initComponents();
+        
+        con = Conexion.getConexion();
+        Alista = new ArrayList();
+        llenarcombo(); 
+       
     }
 
     /**
@@ -41,6 +59,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
+        setResizable(true);
 
         Tabladematerias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,31 +140,34 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(Comboalumno, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(119, 119, 119)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(Materiainscriptaboton)
-                .addGap(49, 49, 49)
-                .addComponent(MateriaNoinscriptaboton))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(Inscribirboton)
-                .addGap(18, 18, 18)
-                .addComponent(Anularinscboton)
-                .addGap(18, 18, 18)
-                .addComponent(Salirinscboton))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(Comboalumno, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(Materiainscriptaboton)
+                        .addGap(49, 49, 49)
+                        .addComponent(MateriaNoinscriptaboton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(Inscribirboton)
+                        .addGap(18, 18, 18)
+                        .addComponent(Anularinscboton)
+                        .addGap(18, 18, 18)
+                        .addComponent(Salirinscboton)))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,14 +192,32 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Inscribirboton)
                     .addComponent(Anularinscboton)
-                    .addComponent(Salirinscboton)))
+                    .addComponent(Salirinscboton))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private void llenarcombo () {
+        
+       Comboalumno.removeAllItems();
+       Alista = (ArrayList) alumno.ListarAlumnos();
+       Iterator iterador = Alista.iterator();
+       while(iterador.hasNext()){
+           Alumno alu = (Alumno) iterador.next();
+           Comboalumno.addItem(alu);   
+       }
+        
+    }
+    
+    
+    
+    
     private void ComboalumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboalumnoActionPerformed
         // TODO add your handling code here:
+               
     }//GEN-LAST:event_ComboalumnoActionPerformed
 
     private void SalirinscbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirinscbotonActionPerformed
@@ -189,7 +229,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Anularinscboton;
-    private javax.swing.JComboBox<String> Comboalumno;
+    private javax.swing.JComboBox<Alumno> Comboalumno;
     private javax.swing.JButton Inscribirboton;
     private javax.swing.JRadioButton MateriaNoinscriptaboton;
     private javax.swing.JRadioButton Materiainscriptaboton;
