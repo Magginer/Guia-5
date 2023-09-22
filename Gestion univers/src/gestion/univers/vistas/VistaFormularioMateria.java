@@ -282,11 +282,12 @@ public class VistaFormularioMateria extends javax.swing.JInternalFrame {
     
         int id = Integer.parseInt(codigotext.getText());
         
+        
         String nombre= nombrematetext.getText();
         int anio= Integer.parseInt(aniotext.getText());
         boolean estado= Estadomateriaboton.isEnabled();
-        
-        Materia materia = new Materia(idmateria, nombre ,anio ,estado);
+      
+        Materia materia = new Materia(id,nombre ,anio ,estado);
         
         MateriaData mate =new MateriaData();
         
