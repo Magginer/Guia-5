@@ -80,6 +80,11 @@ public class VistaFormularioMateria extends javax.swing.JInternalFrame {
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
 
         Guardarmateriaboton.setText("Guardar Cambios");
+        Guardarmateriaboton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GuardarmateriabotonMouseClicked(evt);
+            }
+        });
 
         Buscarcodigoboton.setText("Buscar");
         Buscarcodigoboton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -272,6 +277,22 @@ public class VistaFormularioMateria extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void GuardarmateriabotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarmateriabotonMouseClicked
+    
+        int id = Integer.parseInt(codigotext.getText());
+        
+        String nombre= nombrematetext.getText();
+        int anio= Integer.parseInt(aniotext.getText());
+        boolean estado= Estadomateriaboton.isEnabled();
+        
+        Materia materia = new Materia(idmateria, nombre ,anio ,estado);
+        
+        MateriaData mate =new MateriaData();
+        
+        mate.modificarMateria(materia);
+        
+    }//GEN-LAST:event_GuardarmateriabotonMouseClicked
 
 
 

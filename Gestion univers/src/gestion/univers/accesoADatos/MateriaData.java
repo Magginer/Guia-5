@@ -118,7 +118,7 @@ public class MateriaData {
     }
     
       public void botonestado(int id) {
-        String sql = "UPDATE alumno SET estado = 1 WHERE idmateria=?";
+        String sql = "UPDATE materia SET estado = 1 WHERE idmateria=?";
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -132,7 +132,7 @@ public class MateriaData {
     } 
     
     public void botonestadoinactivo(int id) {
-     String sql = "UPDATE alumno SET estado = 0 WHERE idmateria=?";   
+     String sql = "UPDATE materia SET estado = 0 WHERE idmateria=?";   
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
