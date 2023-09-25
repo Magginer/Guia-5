@@ -5,17 +5,30 @@
  */
 package gestion.univers.vistas;
 
+import gestion.univers.accesoADatos.AlumnoData;
+import gestion.univers.accesoADatos.Conexion;
+import gestion.univers.entidades.Alumno;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  *
  * @author javie
  */
 public class ManipulacionNotas extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ManipulacionNotas
-     */
+    Connection con = null;
+    ArrayList Alista;
+    AlumnoData alumno = new AlumnoData();
+    
     public ManipulacionNotas() {
         initComponents();
+        
+        con = Conexion.getConexion();
+        Alista = new ArrayList();
+        llenarcombo(); 
     }
 
     /**
@@ -42,8 +55,6 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
         jLabel1.setText("Carga de Notas");
 
         jLabel2.setText("Seleccione un alumno:");
-
-        carganotacombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         carganotatabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,6 +143,19 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+     private void llenarcombo () {
+        
+       carganotacombo.removeAllItems();
+       Alista = (ArrayList) alumno.ListarAlumnos();
+       Iterator iterador = Alista.iterator();
+       while(iterador.hasNext()){
+           Alumno alu = (Alumno) iterador.next();
+           carganotacombo.addItem(alu.toString());   
+       }
+        
+    }
+    
+    
     private void salirnotabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirnotabotonActionPerformed
      
          this.dispose();
