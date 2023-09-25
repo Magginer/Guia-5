@@ -108,6 +108,11 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         });
 
         Eliminaralumnoboton.setText("Eliminar");
+        Eliminaralumnoboton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EliminaralumnobotonMouseClicked(evt);
+            }
+        });
 
         Nuevoalumnoboton.setText("Nuevo Alumno");
         Nuevoalumnoboton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -370,6 +375,18 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         
         alu.guardarAlumno(alumno);
     }//GEN-LAST:event_NuevoalumnobotonMouseClicked
+
+    private void EliminaralumnobotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminaralumnobotonMouseClicked
+        
+        int dni = Integer.parseInt(documentotext.getText());
+        
+        AlumnoData alu= new AlumnoData();
+        
+        alu.deleteaAlumno(dni);
+       
+        
+        
+    }//GEN-LAST:event_EliminaralumnobotonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
