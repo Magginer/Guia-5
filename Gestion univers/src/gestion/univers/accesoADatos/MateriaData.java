@@ -35,7 +35,25 @@ public class MateriaData {
 
         String sql = "INSERT INTO materia(idmateria, nombre, año, estado)"
                 + "VALUES (?,?,?,?)";
+        
+       /* try {
+        PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.setString(1, materia.getNombre());
+        ps.setInt(2, materia.getAnio());
+        ps.setBoolean(3, materia.isEstado());
+        ps.executeUpdate();
 
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            int generatedId = rs.getInt(1);
+            materia.setIdMateria(generatedId);
+            JOptionPane.showMessageDialog(null, "Materia guardada con ID: " + generatedId);
+        }
+        ps.close();
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia: " + ex.getMessage());
+        */
+        
         try {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, materia.getIdMateria());
@@ -54,6 +72,14 @@ public class MateriaData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla Materia");
         }
+       
+       
+       
+       
+       
+       
+       
+       
     }
     
      public void modificarMateria(Materia materia) {
@@ -153,12 +179,15 @@ public class MateriaData {
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, IdMateria);
-            int exito= ps.executeUpdate(sql);
+            int exito= ps.executeUpdate();
             
             if (exito==1) {
                 JOptionPane.showMessageDialog(null, "materia eliminada");               
+            } else {
+                JOptionPane.showMessageDialog(null,"No se pudo eliminar la materia");
             }
             
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "error al entrar a la tabla materia");
         }
