@@ -5,8 +5,10 @@
  */
 package gestion.univers.vistas;
 
+import gestion.univers.accesoADatos.AlumnoData;
 import gestion.univers.accesoADatos.Conexion;
 import gestion.univers.accesoADatos.InscripcionData;
+import gestion.univers.accesoADatos.MateriaData;
 import gestion.univers.entidades.Alumno;
 import gestion.univers.entidades.Materia;
 import java.sql.Connection;
@@ -26,6 +28,9 @@ private DefaultTableModel modelo = new DefaultTableModel();
         Connection con = null;
         ArrayList lista;
         InscripcionData insc = new InscripcionData();
+        ArrayList<Materia> Mlista;
+        AlumnoData alumno = new AlumnoData();
+        MateriaData materia = new MateriaData();
     /**
      * Creates new form AlumnosXmaterias
      */
@@ -57,7 +62,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
         Iterator iterador = lista.iterator();
        while(iterador.hasNext()){
            Materia mate = (Materia) iterador.next();
-          // JCmaterias.addItem(mate);
+           JCmaterias.addItem(mate.toString());
        }
     }
     

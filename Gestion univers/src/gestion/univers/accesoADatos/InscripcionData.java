@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import org.mariadb.jdbc.Statement;
 
 /**
@@ -245,6 +246,7 @@ public class InscripcionData {
                 
                 Alumno alumno=new Alumno();
                 alumno.setIdAlumno(rs.getInt("idalumno"));
+                alumno.setDni(rs.getInt("dni"));
                 alumno.setApellido(rs.getString("apellido"));
                 alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechadenacimiento(rs.getDate("fechanacimiento").toLocalDate());
@@ -260,4 +262,7 @@ public class InscripcionData {
         
     }
 
+    
+    
+   
 }
