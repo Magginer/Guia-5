@@ -10,11 +10,13 @@ import gestion.univers.accesoADatos.Conexion;
 import gestion.univers.accesoADatos.InscripcionData;
 import gestion.univers.accesoADatos.MateriaData;
 import gestion.univers.entidades.Alumno;
+import gestion.univers.entidades.Inscripcion;
 import gestion.univers.entidades.Materia;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -95,6 +97,11 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         jLabel3.setText("Listado de materias");
 
         Materiainscriptaboton.setText("Materia inscripta");
+        Materiainscriptaboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MateriainscriptabotonActionPerformed(evt);
+            }
+        });
 
         MateriaNoinscriptaboton.setText("Materia no inscripta");
         MateriaNoinscriptaboton.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +117,11 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         });
 
         Inscribirboton.setText("Inscribir");
+        Inscribirboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InscribirbotonActionPerformed(evt);
+            }
+        });
 
         Salirinscboton.setText("Salir");
         Salirinscboton.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +143,11 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Tabladematerias2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabladematerias2MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(Tabladematerias2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -157,15 +174,16 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(47, 47, 47)
-                                .addComponent(Comboalumno, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Inscribirboton)
-                        .addGap(18, 18, 18)
-                        .addComponent(Anularinscboton)
-                        .addGap(28, 28, 28)
-                        .addComponent(Salirinscboton)))
+                                .addComponent(Comboalumno, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(35, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(Inscribirboton)
+                .addGap(42, 42, 42)
+                .addComponent(Anularinscboton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Salirinscboton)
+                .addGap(76, 76, 76))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,7 +249,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         Mlista = (ArrayList) inscripcion.ObtenerInscripcionesPorAlumno(alu.getIdAlumno());
         for (Materia mate : Mlista) {
             modelo.addRow(new Object[]{mate.getIdMateria(), mate.getNombre(), mate.getAnio()});
-
+           
         }
     }
 
@@ -247,6 +265,33 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         }
 
     }
+    
+     public void inscripto(){
+         
+        InscripcionData inscripcion = new InscripcionData();
+
+        Alumno alu = (Alumno) Comboalumno.getSelectedItem();
+        Mlista = (ArrayList) inscripcion.ObtenerMateriasCursadas(alu.getIdAlumno());
+        for (Materia mate : Mlista) {
+            modelo.addRow(new Object[]{mate.getIdMateria(), mate.getNombre(), mate.getAnio()});
+         
+        }
+         
+     }
+    public void crearinscripcion(){
+        InscripcionData inscripcion = new InscripcionData();
+        MateriaData mate2 = new MateriaData();
+       
+       Alumno alu = (Alumno) Comboalumno.getSelectedItem();
+       int ida = alu.getIdAlumno();
+       
+       
+  
+
+        
+        
+    }
+    
 public void borraFilasTabla() {
 
         int a = modelo.getRowCount() - 1;
@@ -275,6 +320,29 @@ public void borraFilasTabla() {
         noinscripto();
       
     }//GEN-LAST:event_MateriaNoinscriptabotonActionPerformed
+
+    private void MateriainscriptabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MateriainscriptabotonActionPerformed
+        // TODO add your handling code here:
+       borraFilasTabla();
+       inscripto();
+    }//GEN-LAST:event_MateriainscriptabotonActionPerformed
+
+    private void InscribirbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InscribirbotonActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_InscribirbotonActionPerformed
+
+    private void Tabladematerias2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabladematerias2MouseClicked
+        // TODO add your handling code here:
+        
+        int fila = Integer.parseInt(filaTextField.getText());
+        int dato
+        Materia materia= new Materia();
+        DefaultTableModel modelo = (DefaultTableModel) Tabladematerias2.getModel();
+         
+        
+    }//GEN-LAST:event_Tabladematerias2MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
