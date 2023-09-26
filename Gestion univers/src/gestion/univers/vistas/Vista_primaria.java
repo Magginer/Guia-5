@@ -16,6 +16,7 @@ public class Vista_primaria extends javax.swing.JFrame {
      */
     public Vista_primaria() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

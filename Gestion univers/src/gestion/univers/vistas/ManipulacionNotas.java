@@ -1,34 +1,44 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gestion.univers.vistas;
 
-import gestion.univers.accesoADatos.AlumnoData;
-import gestion.univers.accesoADatos.Conexion;
+import gestion.univers.accesoADatos.*;
 import gestion.univers.entidades.Alumno;
-import java.sql.Connection;
+import gestion.univers.entidades.Materia;
+
+import java.sql.*;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.EventObject;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- *
- * @author javie
- */
+import javax.swing.table.DefaultTableModel;
+
+
+
 public class ManipulacionNotas extends javax.swing.JInternalFrame {
 
-    Connection con = null;
-    ArrayList Alista;
-    AlumnoData alumno = new AlumnoData();
+    private Connection con = null;
+    private ArrayList<Alumno> alumnoList;
+    private AlumnoData alumnoData;
+    private DefaultTableModel modelo;
+    private InscripcionData inscripcion;
+    Statement st;
+    ResultSet rs;
+    int id;
+    
     
     public ManipulacionNotas() {
         initComponents();
-        
+        consultar();
+ 
         con = Conexion.getConexion();
-        Alista = new ArrayList();
+        alumnoData= new AlumnoData();
+        alumnoList =(ArrayList<Alumno>) alumnoData.ListarAlumnos();
         llenarcombo(); 
+        
+        modelo= (DefaultTableModel) carganotatabla.getModel();
+        inscripcion= new InscripcionData();
     }
 
     /**
@@ -56,15 +66,18 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Seleccione un alumno:");
 
+        carganotacombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carganotacomboActionPerformed(evt);
+            }
+        });
+
         carganotatabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Codigo", "Nombre", "Nota"
+                "ID", "Nombre", "Nota"
             }
         ) {
             Class[] types = new Class [] {
@@ -85,6 +98,11 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(carganotatabla);
 
         guardarnotaboton.setText("Guardar");
+        guardarnotaboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarnotabotonActionPerformed(evt);
+            }
+        });
 
         salirnotaboton.setText("Salir");
         salirnotaboton.addActionListener(new java.awt.event.ActionListener() {
@@ -100,24 +118,30 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(jLabel1))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(carganotacombo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(guardarnotaboton)
-                .addGap(153, 153, 153)
-                .addComponent(salirnotaboton))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(144, 144, 144)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(66, 66, 66)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(carganotacombo, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(52, 52, 52)
+                                .addComponent(guardarnotaboton)
+                                .addGap(153, 153, 153)
+                                .addComponent(salirnotaboton)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +157,7 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
                         .addComponent(jLabel2))
                     .addComponent(carganotacombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(guardarnotaboton)
@@ -145,16 +169,20 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
 
      private void llenarcombo () {
         
-       carganotacombo.removeAllItems();
-       Alista = (ArrayList) alumno.ListarAlumnos();
-       Iterator iterador = Alista.iterator();
-       while(iterador.hasNext()){
-           Alumno alu = (Alumno) iterador.next();
-           carganotacombo.addItem(alu.toString());   
-       }
+         carganotacombo.removeAllItems();
+         for (Alumno alumno : alumnoList) {
+             carganotacombo.addItem(alumno.toString());
+         }
         
     }
     
+
+  
+     
+     
+     
+     
+     
     
     private void salirnotabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirnotabotonActionPerformed
      
@@ -162,7 +190,58 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_salirnotabotonActionPerformed
 
+    private void guardarnotabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarnotabotonActionPerformed
+        
+         /*for (int i = 0; i < carganotatabla.getRowCount(); i++) {
+            int materiaId = (int) carganotatabla.getValueAt(i, 0); // Suponiendo que la primera columna es el ID
+            double nuevaNota = (double) carganotatabla.getValueAt(i, 2); // Suponiendo que la tercera columna es la calificación
 
+            // Actualiza la calificación en tu estructura de datos (por ejemplo, base de datos) usando materiaId y nuevaNota
+            // Aquí es donde actualizarías tu base de datos con las nuevas calificaciones
+        }
+        JOptionPane.showMessageDialog(null, "Calificaciones guardadas exitosamente.");
+        */
+        
+        
+        
+        
+    }//GEN-LAST:event_guardarnotabotonActionPerformed
+        //  ESTE METODO NO ! ERROR DE CLICK  LINEA 219
+    private void carganotacomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carganotacomboActionPerformed
+
+    }//GEN-LAST:event_carganotacomboActionPerformed
+        //  ESTE METODO NO ! ERROR DE CLICK  LINEA 219
+ 
+    void consultar(){
+    
+            String sql ="SELECT inscripcion.idmateria, materia.nombre,"
+                    + "inscripcion.nota FROM inscripcion "
+                    + "INNER JOIN materia ON inscripcion.idmateria = materia.idmateria";
+                    
+                    
+                 
+               //+ "materia WHERE inscripcion.idmateria = materia.idmateria"
+               // + "AND nota";
+            
+            try {
+                con = Conexion.getConexion();
+                st= con.createStatement();
+                rs= st.executeQuery(sql);
+                Object[] alumnos = new Object[3];
+                modelo = (DefaultTableModel) carganotatabla.getModel();
+                while (rs.next()){
+                    alumnos [0] = rs.getInt("ID");
+                    alumnos [1] = rs.getString("Nombre");
+                    alumnos [2] = rs.getInt("Nota");
+                    
+                    modelo.addRow(alumnos);
+                }
+                carganotatabla.setModel(modelo);
+        } catch (Exception e) {
+        }
+    
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> carganotacombo;
     private javax.swing.JTable carganotatabla;
