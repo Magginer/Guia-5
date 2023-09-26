@@ -7,11 +7,16 @@ package gestion.univers.vistas;
 
 import gestion.univers.accesoADatos.AlumnoData;
 import gestion.univers.accesoADatos.Conexion;
+import gestion.univers.accesoADatos.InscripcionData;
+import gestion.univers.accesoADatos.MateriaData;
 import gestion.univers.entidades.Alumno;
+import gestion.univers.entidades.Inscripcion;
+import gestion.univers.entidades.Materia;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,13 +27,18 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
     Connection con = null;
     ArrayList Alista;
     AlumnoData alumno = new AlumnoData();
+    ArrayList<Materia> Mlista;
+    MateriaData materia = new MateriaData();
+    DefaultTableModel modelo;
     
     public ManipulacionNotas() {
         initComponents();
         
+        modelo = new DefaultTableModel();
         con = Conexion.getConexion();
         Alista = new ArrayList();
         llenarcombo(); 
+        armaCabeceraTabla();
     }
 
     /**
@@ -154,7 +164,32 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
        }
         
     }
-    
+    public void armaCabeceraTabla() {
+
+        //Titulos de Columnas
+        ArrayList<Object> columnas = new ArrayList<Object>();
+        columnas.add("Codigo");
+        columnas.add("Nombre");
+        columnas.add("Nota");
+
+        for (Object it : columnas) {
+
+            modelo.addColumn(it);
+        }
+        carganotatabla.setModel(modelo);
+
+    }
+    public void llenartabla() {
+        InscripcionData inscripcion = new InscripcionData();
+        Inscripcion insc = new Inscripcion();
+
+        Alumno alu = (Alumno) carganotacombo.getSelectedItem();
+        Mlista = (ArrayList) inscripcion.ObtenerInscripcionesPorAlumno(alu.getIdAlumno());
+        for (Materia mate : Mlista) {
+            modelo.addRow(new Object[]{mate.getIdMateria(), mate.getNombre(), insc.getNota()});
+           
+        }
+    }
     
     private void salirnotabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirnotabotonActionPerformed
      

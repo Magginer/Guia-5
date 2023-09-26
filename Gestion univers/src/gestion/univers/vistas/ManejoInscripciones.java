@@ -285,7 +285,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
        Alumno alu = (Alumno) Comboalumno.getSelectedItem();
        int ida = alu.getIdAlumno();
        
-       
+      
   
 
         
@@ -335,11 +335,11 @@ public void borraFilasTabla() {
 
     private void Tabladematerias2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabladematerias2MouseClicked
         // TODO add your handling code here:
-        
-        int fila = Integer.parseInt(filaTextField.getText());
-        int dato
-        Materia materia= new Materia();
-        DefaultTableModel modelo = (DefaultTableModel) Tabladematerias2.getModel();
+        int seleccionar=Tabladematerias2.rowAtPoint(evt.getPoint());
+        Materia id = new Materia();
+       
+                
+     
          
         
     }//GEN-LAST:event_Tabladematerias2MouseClicked
