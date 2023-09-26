@@ -101,6 +101,11 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         });
 
         Anularinscboton.setText("Anular inscripcion");
+        Anularinscboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnularinscbotonActionPerformed(evt);
+            }
+        });
 
         Tabladematerias2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -246,7 +251,7 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_ComboalumnoActionPerformed
 
     private void SalirinscbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirinscbotonActionPerformed
-     
+     //a ver si se arregla
          this.dispose();
         
     }//GEN-LAST:event_SalirinscbotonActionPerformed
@@ -258,6 +263,10 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_MateriaNoinscriptabotonActionPerformed
+
+    private void AnularinscbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnularinscbotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AnularinscbotonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
