@@ -174,16 +174,7 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
              carganotacombo.addItem(alumno.toString());
          }
         
-    }
-    
-
-  
-     
-     
-     
-     
-     
-    
+    }  
     private void salirnotabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirnotabotonActionPerformed
      
          this.dispose();
@@ -208,13 +199,52 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_guardarnotabotonActionPerformed
         //  ESTE METODO NO ! ERROR DE CLICK  LINEA 219
     private void carganotacomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carganotacomboActionPerformed
-
+        
+        String selec = carganotacombo.getSelectedItem().toString();
+        
+          String sql ="SELECT inscripcion.idmateria, materia.nombre,"
+                    + "inscripcion.nota FROM inscripcion "
+                    + "INNER JOIN materia ON inscripcion.idmateria = materia.idmateria ";
+                  
+                  
+                  
+                    
+                    
+                 
+               //+ "materia WHERE inscripcion.idmateria = materia.idmateria"
+               // + "AND nota";
+            
+            try {
+                con = Conexion.getConexion();
+                PreparedStatement ps= con.prepareStatement(sql);
+                ps.setString(1, selec);
+                rs= ps.executeQuery();
+                modelo.setRowCount(0);
+                
+                Object[] alumnos = {"ID","Nombre", "Nota"};//new Object[2];
+                modelo = (DefaultTableModel) carganotatabla.getModel();
+                while (rs.next()){
+                    alumnos [0] = rs.getInt("idmateria");
+                    alumnos [1] = rs.getString("Nombre");
+                    alumnos [2] = rs.getInt("Nota");
+                    
+                    modelo.addRow(alumnos);
+                }
+                carganotatabla.setModel(modelo);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_carganotacomboActionPerformed
-        //  ESTE METODO NO ! ERROR DE CLICK  LINEA 219
+
+//  ESTE METODO NO ! ERROR DE CLICK  LINEA 219
  
-    void consultar(){
     
-            String sql ="SELECT inscripcion.idmateria, materia.nombre,"
+    
+    
+    void consultar(){
+            
+        
+
+           /* String sql ="SELECT inscripcion.idmateria, materia.nombre,"
                     + "inscripcion.nota FROM inscripcion "
                     + "INNER JOIN materia ON inscripcion.idmateria = materia.idmateria";
                     
@@ -227,10 +257,10 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
                 con = Conexion.getConexion();
                 st= con.createStatement();
                 rs= st.executeQuery(sql);
-                Object[] alumnos = new Object[3];
+                Object[] alumnos = {"ID","Nombre", "Nota"};//new Object[2];
                 modelo = (DefaultTableModel) carganotatabla.getModel();
                 while (rs.next()){
-                    alumnos [0] = rs.getInt("ID");
+                    alumnos [0] = rs.getInt("idmateria");
                     alumnos [1] = rs.getString("Nombre");
                     alumnos [2] = rs.getInt("Nota");
                     
@@ -238,7 +268,7 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
                 }
                 carganotatabla.setModel(modelo);
         } catch (Exception e) {
-        }
+        }*/
     
     }
     
