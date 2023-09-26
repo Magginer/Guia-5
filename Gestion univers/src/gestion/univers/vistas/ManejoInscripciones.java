@@ -273,7 +273,7 @@ public void borraFilasTabla() {
         // TODO add your handling code here:
         borraFilasTabla();
         noinscripto();
-        //asd
+      
     }//GEN-LAST:event_MateriaNoinscriptabotonActionPerformed
 
 
