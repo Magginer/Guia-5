@@ -39,6 +39,7 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
         Alista = new ArrayList();
         llenarcombo(); 
         armaCabeceraTabla();
+        
     }
 
     /**

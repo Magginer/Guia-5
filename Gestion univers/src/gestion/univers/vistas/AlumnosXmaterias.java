@@ -29,6 +29,7 @@ private DefaultTableModel modelo = new DefaultTableModel();
         ArrayList lista;
         InscripcionData insc = new InscripcionData();
         ArrayList<Materia> Mlista;
+        ArrayList  Alista;
         AlumnoData alumno = new AlumnoData();
         MateriaData materia = new MateriaData();
     /**
@@ -60,8 +61,8 @@ private DefaultTableModel modelo = new DefaultTableModel();
         JCmaterias.removeAllItems();
         
         
-        lista = (ArrayList)insc.ObtenerAlumnoxMateria(WIDTH);
-        Iterator iterador = lista.iterator();
+        Mlista = (ArrayList)materia.ListarMateria();
+        Iterator iterador = Mlista.iterator();
        while(iterador.hasNext()){
            Materia mate = (Materia) iterador.next();
            JCmaterias.addItem(mate.toString());
