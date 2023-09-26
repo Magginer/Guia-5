@@ -56,8 +56,8 @@ private DefaultTableModel modelo = new DefaultTableModel();
         lista = (ArrayList)insc.ObtenerAlumnoxMateria(WIDTH);
         Iterator iterador = lista.iterator();
        while(iterador.hasNext()){
-           Alumno mate = (Alumno) iterador.next();
-           JCmaterias.addItem(title);
+           Materia mate = (Materia) iterador.next();
+          // JCmaterias.addItem(mate);
        }
     }
     

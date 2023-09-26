@@ -232,8 +232,8 @@ public class InscripcionData {
         
          ArrayList<Alumno> alumnos = new ArrayList<>();
          
-         String sql = "SELECT a.idalumno, dni, nombre, apellido, fechanaciemiento, estado"
-                 + "FROM inscripcion i, alumno a WHERE i.idalumno = a.idalumno AND idmateria=? AND a.estado = 1";
+         String sql = "SELECT idalumno, dni, nombre, apellido, fechanacimiento, estado"
+                 + "FROM inscripcion i,  alumno a WHERE i.idalumno = a.idalumno AND idmateria=? AND a.estado = 1";
                  //sql arranca con el "FROM" y al final lee el "SELECT"/sentencia usada
          
         try {
@@ -253,7 +253,7 @@ public class InscripcionData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla inscripcion");
+            JOptionPane.showMessageDialog(null, "Error al conectar con la tabla inscripción" + ex.getMessage());
         }
          
           return alumnos;       
