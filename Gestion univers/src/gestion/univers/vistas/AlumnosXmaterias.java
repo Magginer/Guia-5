@@ -58,6 +58,8 @@ private DefaultTableModel modelo = new DefaultTableModel();
 
     private void llenarCombo(){
         JCmaterias.removeAllItems();
+        
+        
         lista = (ArrayList)insc.ObtenerAlumnoxMateria(WIDTH);
         Iterator iterador = lista.iterator();
        while(iterador.hasNext()){

@@ -34,6 +34,8 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
     ArrayList<Materia> Mlista;
     AlumnoData alumno = new AlumnoData();
     MateriaData materia = new MateriaData();
+    int idm;
+    int ida;
     DefaultTableModel modelo;
    
     public ManejoInscripciones() {
@@ -44,6 +46,8 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         Alista = new ArrayList();
         llenarcombo();
         armaCabeceraTabla();
+        
+        
        
     }
 
@@ -280,16 +284,22 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
      }
     public void crearinscripcion(){
         InscripcionData inscripcion = new InscripcionData();
-        MateriaData mate2 = new MateriaData();
+        MateriaData mate = new MateriaData();
+        AlumnoData alumno = new AlumnoData();
+        Alumno idalumno = new Alumno(); 
+        Materia idmateria = new Materia();
        
        Alumno alu = (Alumno) Comboalumno.getSelectedItem();
-       int ida = alu.getIdAlumno();
+       ida = alu.getIdAlumno();
        
+       
+       idalumno = alumno.buscarAlumno(ida);
+       idmateria = mate.buscarMateria(idm);
+       int nota = 0;       
       
-  
-
-        
-        
+       Inscripcion insc = new Inscripcion(idalumno,idmateria,nota);
+       inscripcion.guardarInscripcion(insc);
+               
     }
     
 public void borraFilasTabla() {
@@ -329,17 +339,18 @@ public void borraFilasTabla() {
 
     private void InscribirbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InscribirbotonActionPerformed
         // TODO add your handling code here:
-        
+       crearinscripcion();
         
     }//GEN-LAST:event_InscribirbotonActionPerformed
 
     private void Tabladematerias2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabladematerias2MouseClicked
         // TODO add your handling code here:
-        int seleccionar=Tabladematerias2.rowAtPoint(evt.getPoint());
-        Materia id = new Materia();
+       int index = Tabladematerias2.getSelectedRow();
+       String dato;
+       DefaultTableModel modelo = (DefaultTableModel) Tabladematerias2.getModel();
+       dato = modelo.getValueAt(index, 0).toString();
+       idm = Integer.parseInt(dato);
        
-                
-     
          
         
     }//GEN-LAST:event_Tabladematerias2MouseClicked
