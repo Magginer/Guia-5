@@ -10,6 +10,7 @@ import gestion.univers.accesoADatos.Conexion;
 import gestion.univers.accesoADatos.InscripcionData;
 import gestion.univers.accesoADatos.MateriaData;
 import gestion.univers.entidades.Alumno;
+import gestion.univers.entidades.Inscripcion;
 import gestion.univers.entidades.Materia;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -68,7 +69,20 @@ private DefaultTableModel modelo = new DefaultTableModel();
            JCmaterias.addItem(mate.toString());
        }
     }
-    
+    public void llenartabla() {
+        InscripcionData inscripcion = new InscripcionData();
+        
+
+        Materia mate = (Materia) JCmaterias.getSelectedItem();
+        Alista = (ArrayList) inscripcion.ObtenerAlumnoxMateria(mate.getIdMateria());
+        
+        for(Alumno alu: Alista){
+        //for (Alumno alu : Alista) 
+        
+            modelo.addRow(new Object[]{alu.getIdAlumno(), alu.getDni(), alu.getNombre(),alu.getApellido()});
+           
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
