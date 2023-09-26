@@ -135,6 +135,11 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
         });
 
         Anularinscboton.setText("Anular inscripcion");
+        Anularinscboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AnularinscbotonActionPerformed(evt);
+            }
+        });
 
         Tabladematerias2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -302,6 +307,27 @@ public class ManejoInscripciones extends javax.swing.JInternalFrame {
                
     }
     
+    public void sacarinscripcion (){
+        
+        InscripcionData inscripcion = new InscripcionData();
+        MateriaData mate = new MateriaData();
+        AlumnoData alumno = new AlumnoData();
+        Alumno idalumno = new Alumno(); 
+        Materia idmateria = new Materia();
+       
+       Alumno alu = (Alumno) Comboalumno.getSelectedItem();
+       ida = alu.getIdAlumno();
+       
+       
+       idalumno = alumno.buscarAlumno(ida);
+       idmateria = mate.buscarMateria(idm);
+       int nota = 0;       
+      
+       inscripcion.deletearMateria(ida, idm);
+        
+        
+    }
+    
 public void borraFilasTabla() {
 
         int a = modelo.getRowCount() - 1;
@@ -354,6 +380,12 @@ public void borraFilasTabla() {
          
         
     }//GEN-LAST:event_Tabladematerias2MouseClicked
+
+    private void AnularinscbotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnularinscbotonActionPerformed
+        // TODO add your handling code here:
+        sacarinscripcion ();
+        
+    }//GEN-LAST:event_AnularinscbotonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
