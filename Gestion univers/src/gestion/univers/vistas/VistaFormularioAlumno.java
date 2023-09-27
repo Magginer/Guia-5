@@ -23,6 +23,8 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
 
     public VistaFormularioAlumno() {
         initComponents();
+        
+        
     }
 
     /**
@@ -356,8 +358,14 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_limpiarbotonMouseClicked
 
     private void NuevoalumnobotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NuevoalumnobotonMouseClicked
-        
-        int dni = Integer.parseInt(documentotext.getText());
+      try {
+          String dniTexto= documentotext.getText();
+          if(!dniTexto.matches("\\d+")){   //  "\\d+"  esto sirve para saber si una cadena de texto contiene numeros 
+              JOptionPane.showMessageDialog(this, "erro de tipeo, solo numeros en DOCUMENTO");
+              
+          }
+        int dni = Integer.parseInt(documentotext.getText()); 
+      
         String apellido= apellidotext.getText();
         String nombre= nombretext.getText();
         boolean estado= botondeestado.isEnabled();
@@ -370,10 +378,13 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         alumno.setNombre(nombre);
         alumno.setEstado(estado);
         alumno.setFechadenacimiento(fecha);    // tengo dudas aqui 
-        
+
         AlumnoData alu = new AlumnoData();
         
         alu.guardarAlumno(alumno);
+    }catch(NumberFormatException e){
+    }
+    
     }//GEN-LAST:event_NuevoalumnobotonMouseClicked
 
     private void EliminaralumnobotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EliminaralumnobotonMouseClicked
@@ -409,4 +420,10 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JButton limpiarboton;
     private javax.swing.JTextField nombretext;
     // End of variables declaration//GEN-END:variables
+
+    private boolean contieneNumeros(String apellido) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
 }
