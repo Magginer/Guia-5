@@ -277,10 +277,12 @@ private DefaultTableModel modelo = new DefaultTableModel() {
     private void carganotatablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carganotatablaMouseClicked
         // TODO add your handling code here:
         int fila = carganotatabla.getSelectedRow();
-        
+        int columna = carganotatabla.getSelectedColumn();
         id = Integer.parseInt(this.carganotatabla.getValueAt(fila, 0).toString());
         idm = Integer.parseInt(carganotatabla.getValueAt(fila, 0).toString());
-        nota = Integer.parseInt(carganotatabla.getValueAt(fila, 2).toString());
+        nota = Integer.parseInt(carganotatabla.getValueAt(fila,2).toString());
+        
+        System.out.println(nota);
     }//GEN-LAST:event_carganotatablaMouseClicked
 
 
