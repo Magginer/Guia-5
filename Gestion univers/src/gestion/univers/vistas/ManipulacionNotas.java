@@ -23,13 +23,21 @@ import javax.swing.table.DefaultTableModel;
  * @author javie
  */
 public class ManipulacionNotas extends javax.swing.JInternalFrame {
+    
+private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean IsCellEditable(int Fila, int Columna) {
+
+            return false;
+        }
+    };
+
 
     Connection con = null;
-    ArrayList Alista;
+    ArrayList <Alumno>Alista;
     AlumnoData alumno = new AlumnoData();
-    ArrayList<Materia> Mlista;
+    ArrayList<Inscripcion> Mlista;
     MateriaData materia = new MateriaData();
-    DefaultTableModel modelo;
+    //DefaultTableModel modelo;
     
     public ManipulacionNotas() {
         initComponents();
@@ -66,6 +74,12 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
         jLabel1.setText("Carga de Notas");
 
         jLabel2.setText("Seleccione un alumno:");
+
+        carganotacombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                carganotacomboActionPerformed(evt);
+            }
+        });
 
         carganotatabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,34 +175,45 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
        Iterator iterador = Alista.iterator();
        while(iterador.hasNext()){
            Alumno alu = (Alumno) iterador.next();
-           carganotacombo.addItem(alu.toString());   
+           carganotacombo.addItem(alu);   
        }
         
     }
     public void armaCabeceraTabla() {
 
         //Titulos de Columnas
-        ArrayList<Object> columnas = new ArrayList<Object>();
-        columnas.add("Codigo");
-        columnas.add("Nombre");
-        columnas.add("Nota");
+        //ArrayList<Object> columnas = new ArrayList<Object>();
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Nota");
 
-        for (Object it : columnas) {
-
-            modelo.addColumn(it);
-        }
+//        for (Object it : columnas) {  
+//
+//            modelo.addColumn(it);
+//        }
         carganotatabla.setModel(modelo);
 
     }
+    
+    private void Borrarfila() {
+        int fila = modelo.getRowCount() - 1;
+        for (; fila >= 0; fila--) {
+            modelo.removeRow(fila);
+        }
+    }
+    
     public void llenartabla() {
+        Borrarfila();
         InscripcionData inscripcion = new InscripcionData();
-        Inscripcion insc = new Inscripcion();
+        
 
         Alumno alu = (Alumno) carganotacombo.getSelectedItem();
         Mlista = (ArrayList) inscripcion.ObtenerInscripcionesPorAlumno(alu.getIdAlumno());
-        for (Materia mate : Mlista) {
-            modelo.addRow(new Object[]{mate.getIdMateria(), mate.getNombre(), insc.getNota()});
-           
+        
+        for (Inscripcion insc : Mlista) {
+            
+            modelo.addRow(new Object[]{insc.getMateria().getIdMateria(), insc.getMateria().getNombre(), insc.getNota()});
+            
         }
     }
     
@@ -197,10 +222,20 @@ public class ManipulacionNotas extends javax.swing.JInternalFrame {
          this.dispose();
         
     }//GEN-LAST:event_salirnotabotonActionPerformed
+    private int nom = 0;
+    
+    private void carganotacomboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_carganotacomboActionPerformed
+       nom=nom+1;
+        
+        if (nom == 2) {
+             llenartabla();
+        }
+         nom=1;
+    }//GEN-LAST:event_carganotacomboActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> carganotacombo;
+    private javax.swing.JComboBox<Alumno> carganotacombo;
     private javax.swing.JTable carganotatabla;
     private javax.swing.JButton guardarnotaboton;
     private javax.swing.JLabel jLabel1;

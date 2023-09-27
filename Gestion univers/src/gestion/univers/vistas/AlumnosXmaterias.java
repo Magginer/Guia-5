@@ -10,7 +10,7 @@ import gestion.univers.accesoADatos.Conexion;
 import gestion.univers.accesoADatos.InscripcionData;
 import gestion.univers.accesoADatos.MateriaData;
 import gestion.univers.entidades.Alumno;
-import gestion.univers.entidades.Inscripcion;
+
 import gestion.univers.entidades.Materia;
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -23,14 +23,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AlumnosXmaterias extends javax.swing.JInternalFrame {
 private DefaultTableModel modelo = new DefaultTableModel();
+
+       
         public boolean isCellEditable(int c, int f){
             return false;
         }
+        
         Connection con = null;
         ArrayList lista;
         InscripcionData insc = new InscripcionData();
         ArrayList<Materia> Mlista;
-        ArrayList  Alista;
+        ArrayList <Alumno> Alista;
         AlumnoData alumno = new AlumnoData();
         MateriaData materia = new MateriaData();
     /**
@@ -42,47 +45,75 @@ private DefaultTableModel modelo = new DefaultTableModel();
         lista = new ArrayList();
         armarTabla();
         llenarCombo();
+       // JTtabla.setModel(modelo); 
     }
 
     private void armarTabla() {
-        ArrayList<Object> columnas = new ArrayList<Object>();
+       //ArrayList<Object> columnas = new ArrayList<Object>();
         modelo.addColumn("ID");
         modelo.addColumn("DNI");
         modelo.addColumn("Apellido");
         modelo.addColumn("Nombre");
 
-        for (Object it : columnas) {
+       /* for (Object it : columnas) {
             modelo.addColumn(it);
-        }
+        }*/
         JTtabla.setModel(modelo);
     }
 
 
     private void llenarCombo(){
-        JCmaterias.removeAllItems();
+       // JCmaterias.removeAllItems();
         
         
         Mlista = (ArrayList)materia.ListarMateria();
         Iterator iterador = Mlista.iterator();
        while(iterador.hasNext()){
            Materia mate = (Materia) iterador.next();
-           JCmaterias.addItem(mate.toString());
+           JCmaterias.addItem(mate);
+           
        }
     }
-    public void llenartabla() {
-        InscripcionData inscripcion = new InscripcionData();
-        
-
-        Materia mate = (Materia) JCmaterias.getSelectedItem();
-        Alista = (ArrayList) inscripcion.ObtenerAlumnoxMateria(mate.getIdMateria());
-        
-        for(Alumno alu: Alista){
-        //for (Alumno alu : Alista) 
-        
-            modelo.addRow(new Object[]{alu.getIdAlumno(), alu.getDni(), alu.getNombre(),alu.getApellido()});
-           
+    
+    private void Borrarfila() {
+        int fila = modelo.getRowCount() - 1;
+        for (; fila >= 0; fila--) {
+            modelo.removeRow(fila);
         }
     }
+    
+    public void llenartabla() {
+        Borrarfila();
+        InscripcionData inscripcion = new InscripcionData();
+        
+      
+        System.out.println("hola");
+        Materia mates = (Materia)JCmaterias.getSelectedItem();
+        System.out.println("hola");
+        Alista = (ArrayList) inscripcion.ObtenerAlumnoxMateria(mates.getIdMateria());
+        System.out.println("hola");
+       for(Alumno alu: Alista){
+           System.out.println("hola");
+        //for (Alumno alu : Alista)
+            
+           modelo.addRow(new Object[]{alu.getIdAlumno(), alu.getDni(), alu.getNombre(),alu.getApellido()});
+           
+        }
+       //JTtabla.setModel(modelo);
+    }
+    
+    
+   /* private void actualizarTabla() {
+    modelo.setRowCount(0); // Limpiar la tabla
+    
+    Materia materiaSeleccionada = (Materia) JCmaterias.getSelectedItem();
+    InscripcionData inscripcionData = new InscripcionData();
+    alumno = inscripcionData.obtenerAlumnosxMateria(materiaSeleccionada.getIdMateria());
+
+    for (Alumno alu : alumno) {
+        modelo.addRow(new Object[]{alu.getIdAlumno(), alu.getDni(), alu.getApellido(), alu.getNombre()});
+    }
+}*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -183,15 +214,24 @@ private DefaultTableModel modelo = new DefaultTableModel();
         
     }//GEN-LAST:event_JBsalirActionPerformed
 
+    private int nom=0;
+    
+    
     private void JCmateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCmateriasActionPerformed
-        // TODO add your handling code here:
+        nom=nom+1;
         
+        if (nom == 2) {
+             llenartabla();
+        }
+         nom=1;
+       
+       
     }//GEN-LAST:event_JCmateriasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBsalir;
-    private javax.swing.JComboBox<String> JCmaterias;
+    private javax.swing.JComboBox<Materia> JCmaterias;
     private javax.swing.JTable JTtabla;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

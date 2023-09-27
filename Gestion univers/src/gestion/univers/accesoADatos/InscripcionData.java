@@ -232,12 +232,11 @@ public class InscripcionData {
         
          ArrayList<Alumno> alumnos = new ArrayList<>();
          
-         String sql = "SELECT idalumno, dni, nombre, apellido, fechanacimiento, estado"
-                 + "FROM inscripcion i,  alumno a WHERE i.idalumno = a.idalumno AND idmateria=? AND a.estado = 1";
+         String sql = "SELECT a.idalumno, dni, nombre, apellido, fechanacimiento, estado FROM inscripcion i,  alumno a WHERE i.idalumno = a.idalumno AND idmateria=? AND a.estado = 1";
                  //sql arranca con el "FROM" y al final lee el "SELECT"/sentencia usada
          
         try {
-            PreparedStatement ps=con.prepareCall(sql);  //es indistinto el call con el statement
+            PreparedStatement ps=con.prepareStatement(sql);  //el Call no es indistinto del prepareStatement 
             ps.setInt(1, IdMateria);
             
             ResultSet rs=ps.executeQuery();
