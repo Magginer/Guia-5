@@ -75,7 +75,7 @@ public class InscripcionData {
             int filas = ps.executeUpdate();
             if (filas > 0) {
 
-                JOptionPane.showMessageDialog(null, "se ah actualizado la nota ");
+                JOptionPane.showMessageDialog(null, "se ha actualizado la nota ");
             }
             ps.close();
 

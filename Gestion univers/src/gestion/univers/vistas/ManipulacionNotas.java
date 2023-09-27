@@ -37,7 +37,11 @@ private DefaultTableModel modelo = new DefaultTableModel() {
     AlumnoData alumno = new AlumnoData();
     ArrayList<Inscripcion> Mlista;
     MateriaData materia = new MateriaData();
-    //DefaultTableModel modelo;
+    double nota;
+    int ida;
+    int idm;
+    int id;
+    
     
     public ManipulacionNotas() {
         initComponents();
@@ -107,9 +111,19 @@ private DefaultTableModel modelo = new DefaultTableModel() {
                 return canEdit [columnIndex];
             }
         });
+        carganotatabla.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                carganotatablaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(carganotatabla);
 
         guardarnotaboton.setText("Guardar");
+        guardarnotaboton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarnotabotonActionPerformed(evt);
+            }
+        });
 
         salirnotaboton.setText("Salir");
         salirnotaboton.addActionListener(new java.awt.event.ActionListener() {
@@ -217,6 +231,23 @@ private DefaultTableModel modelo = new DefaultTableModel() {
         }
     }
     
+    public void actualizarnota(){
+        AlumnoData alumno = new AlumnoData();
+        Alumno idalumno = new Alumno(); 
+        
+        
+        
+       Alumno alu = (Alumno) carganotacombo.getSelectedItem();
+       ida = alu.getIdAlumno();
+       
+       
+       InscripcionData inscripcion = new InscripcionData();
+       inscripcion.actualizarNota(ida, idm, nota);
+        
+       
+    }
+    
+    
     private void salirnotabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirnotabotonActionPerformed
      
          this.dispose();
@@ -232,6 +263,21 @@ private DefaultTableModel modelo = new DefaultTableModel() {
         }
          nom=1;
     }//GEN-LAST:event_carganotacomboActionPerformed
+
+    private void guardarnotabotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarnotabotonActionPerformed
+        // TODO add your handling code here:
+        actualizarnota();
+        
+    }//GEN-LAST:event_guardarnotabotonActionPerformed
+
+    private void carganotatablaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carganotatablaMouseClicked
+        // TODO add your handling code here:
+        int fila = carganotatabla.getSelectedRow();
+        
+        id = Integer.parseInt(this.carganotatabla.getValueAt(fila, 0).toString());
+        idm = Integer.parseInt(carganotatabla.getValueAt(fila, 0).toString());
+        nota = Integer.parseInt(carganotatabla.getValueAt(fila, 2).toString());
+    }//GEN-LAST:event_carganotatablaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -87,33 +87,16 @@ private DefaultTableModel modelo = new DefaultTableModel();
         InscripcionData inscripcion = new InscripcionData();
         
       
-        System.out.println("hola");
+        
         Materia mates = (Materia)JCmaterias.getSelectedItem();
-        System.out.println("hola");
         Alista = (ArrayList) inscripcion.ObtenerAlumnoxMateria(mates.getIdMateria());
-        System.out.println("hola");
-       for(Alumno alu: Alista){
-           System.out.println("hola");
-        //for (Alumno alu : Alista)
-            
-           modelo.addRow(new Object[]{alu.getIdAlumno(), alu.getDni(), alu.getNombre(),alu.getApellido()});
+        for(Alumno alu: Alista){
+        modelo.addRow(new Object[]{alu.getIdAlumno(), alu.getDni(), alu.getNombre(),alu.getApellido()});
            
         }
-       //JTtabla.setModel(modelo);
+  
     }
     
-    
-   /* private void actualizarTabla() {
-    modelo.setRowCount(0); // Limpiar la tabla
-    
-    Materia materiaSeleccionada = (Materia) JCmaterias.getSelectedItem();
-    InscripcionData inscripcionData = new InscripcionData();
-    alumno = inscripcionData.obtenerAlumnosxMateria(materiaSeleccionada.getIdMateria());
-
-    for (Alumno alu : alumno) {
-        modelo.addRow(new Object[]{alu.getIdAlumno(), alu.getDni(), alu.getApellido(), alu.getNombre()});
-    }
-}*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
