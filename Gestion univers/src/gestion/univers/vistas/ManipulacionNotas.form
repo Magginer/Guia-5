@@ -118,7 +118,7 @@
               <Table columnCount="3" rowCount="4">
                 <Column editable="false" title="Codigo" type="java.lang.Integer"/>
                 <Column editable="false" title="Nombre" type="java.lang.String"/>
-                <Column editable="true" title="Nota" type="java.lang.Integer"/>
+                <Column editable="true" title="Nota" type="java.lang.Double"/>
               </Table>
             </Property>
           </Properties>

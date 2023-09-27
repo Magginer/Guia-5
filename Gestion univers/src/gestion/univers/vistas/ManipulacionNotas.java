@@ -37,7 +37,7 @@ private DefaultTableModel modelo = new DefaultTableModel() {
     AlumnoData alumno = new AlumnoData();
     ArrayList<Inscripcion> Mlista;
     MateriaData materia = new MateriaData();
-    int nota;
+    double nota;
     int ida;
     int idm;
     int id;
@@ -97,7 +97,7 @@ private DefaultTableModel modelo = new DefaultTableModel() {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, true
@@ -282,7 +282,7 @@ private DefaultTableModel modelo = new DefaultTableModel() {
         idm = Integer.parseInt(carganotatabla.getValueAt(fila, 0).toString());
         nota = Integer.parseInt(carganotatabla.getValueAt(fila,2).toString());
         
-        System.out.println(nota);
+        
     }//GEN-LAST:event_carganotatablaMouseClicked
 
 
