@@ -278,9 +278,8 @@ private DefaultTableModel modelo = new DefaultTableModel() {
         // TODO add your handling code here:
         int fila = carganotatabla.getSelectedRow();
         int columna = carganotatabla.getSelectedColumn();
-        id = Integer.parseInt(this.carganotatabla.getValueAt(fila, 0).toString());
-        idm = Integer.parseInt(carganotatabla.getValueAt(fila, 0).toString());
-        nota = Integer.parseInt(carganotatabla.getValueAt(fila,2).toString());
+        idm = Integer.parseInt(this.carganotatabla.getValueAt(fila, 0).toString());
+        nota = Integer.parseInt(this.carganotatabla.getValueAt(fila,2).toString());
         
         
     }//GEN-LAST:event_carganotatablaMouseClicked
