@@ -367,7 +367,7 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         int dni = Integer.parseInt(documentotext.getText()); 
         
         String apellido= apellidotext.getText();
-        if(!apellido.matches("^[a-zA-Z]+$")) {
+        if(!apellido.matches("^[a-zA-Z]+$")) {  // si el texto colocado dentro de apellidotext no concuerda con lo estipulado en el if da error
             JOptionPane.showMessageDialog(this,"Error de tipeo, Solo letras en APELLIDO");
                 return;
                 }
