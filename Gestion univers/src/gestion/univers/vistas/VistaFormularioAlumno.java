@@ -365,9 +365,20 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
               
           }
         int dni = Integer.parseInt(documentotext.getText()); 
-      
+        
         String apellido= apellidotext.getText();
+        if(!apellido.matches("^[a-zA-Z]+$")) {
+            JOptionPane.showMessageDialog(this,"Error de tipeo, Solo letras en APELLIDO");
+                return;
+                }
+        
+        
         String nombre= nombretext.getText();
+        if(!nombre.matches("^[a-zA-Z]+$")){
+            JOptionPane.showMessageDialog(this, "Error de tipero de nuevo master, Solo letras en Nombre ");
+            return;
+        }
+        
         boolean estado= botondeestado.isEnabled();
         LocalDate fecha= FechaAlumno.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();  // error aqui al guardar alumno
         Date fech = Date.valueOf(fecha);
@@ -377,7 +388,7 @@ public class VistaFormularioAlumno extends javax.swing.JInternalFrame {
         alumno.setApellido(apellido);
         alumno.setNombre(nombre);
         alumno.setEstado(estado);
-        alumno.setFechadenacimiento(fecha);    // tengo dudas aqui 
+        alumno.setFechadenacimiento(fecha);    
 
         AlumnoData alu = new AlumnoData();
         
